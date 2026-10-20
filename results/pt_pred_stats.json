@@ -1,0 +1,36 @@
+{
+  "model": "models\\best.pt",
+  "format": "pt",
+  "backend": "Ultralytics models\\best.pt",
+  "frames": 611,
+  "frames_with_detection": 419,
+  "detections": 591,
+  "per_class": {
+    "B3": {
+      "count": 506,
+      "avg_conf": 0.6609
+    },
+    "B2": {
+      "count": 81,
+      "avg_conf": 0.4453
+    },
+    "B1": {
+      "count": 4,
+      "avg_conf": 0.2897
+    }
+  },
+  "avg_ms": {
+    "preprocess": 1.93,
+    "inference": 23.9,
+    "postprocess": 2.21,
+    "total": 30.71
+  },
+  "end_to_end_fps": 15.28,
+  "output": "results\\pt_pred.mp4",
+  "params": {
+    "conf": 0.25,
+    "iou": 0.7,
+    "imgsz": 640,
+    "max_det": 30
+  }
+}

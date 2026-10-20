@@ -1,0 +1,36 @@
+{
+  "model": "models\\best.torchscript",
+  "format": "torchscript",
+  "backend": "Ultralytics models\\best.torchscript",
+  "frames": 611,
+  "frames_with_detection": 426,
+  "detections": 603,
+  "per_class": {
+    "B3": {
+      "count": 513,
+      "avg_conf": 0.6613
+    },
+    "B2": {
+      "count": 86,
+      "avg_conf": 0.4474
+    },
+    "B1": {
+      "count": 4,
+      "avg_conf": 0.3261
+    }
+  },
+  "avg_ms": {
+    "preprocess": 2.69,
+    "inference": 38.21,
+    "postprocess": 2.54,
+    "total": 44.36
+  },
+  "end_to_end_fps": 12.49,
+  "output": "results\\torchscript_pred.mp4",
+  "params": {
+    "conf": 0.25,
+    "iou": 0.7,
+    "imgsz": 640,
+    "max_det": 30
+  }
+}

@@ -1,0 +1,31 @@
+# 虚拟环境
+.venv/
+venv/
+env/
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.ipynb_checkpoints/
+
+# 视频：原始视频与推理结果视频体积大，作为作业附件单独提交
+*.mp4
+*.mov
+*.avi
+*.webm
+*.mkv
+
+# 运行产物 / 调试文件
+results/_*/
+results/_*
+results/frames/
+runs/
+snapshots/
+
+# 编辑器 / 系统
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+desktop.ini
