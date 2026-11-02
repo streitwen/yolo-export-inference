@@ -22,6 +22,8 @@ results/_*
 results/frames/
 runs/
 snapshots/
+build/
+build-*/
 
 # 编辑器 / 系统
 .vscode/
