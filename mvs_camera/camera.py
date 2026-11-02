@@ -245,6 +245,7 @@ class MvsCamera:
                 "DeviceFirmwareVersion", self.device.device_version
             ),
             "device_version": self.device.device_version,
+            "mvs_sdk_version": self.sdk.sdk_version,
             "pixel_format": self.actual_pixel_format,
             "roi": {
                 "offset_x": self._safe_int("OffsetX"),

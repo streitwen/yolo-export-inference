@@ -50,6 +50,14 @@ def _json_default(value):
     raise TypeError(f"not JSON serializable: {type(value)!r}")
 
 
+def operating_system_name() -> str:
+    try:
+        release = platform.freedesktop_os_release()
+        return release.get("PRETTY_NAME") or platform.platform()
+    except (AttributeError, OSError):
+        return platform.platform()
+
+
 def write_json(path: Path, data: Any) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
     with open(path, "w", encoding="utf-8") as handle:
@@ -450,6 +458,7 @@ def cmd_experiment(args: argparse.Namespace) -> int:
     summary = {
         "time": time.strftime("%Y-%m-%d %H:%M:%S"),
         "scene": args.scene,
+        "operating_system": operating_system_name(),
         "platform": platform.platform(),
         "python": sys.version,
         "opencv": cv2.__version__,
@@ -595,6 +604,9 @@ def stream_yolo(
         "model": str(args.model),
         "backend": predictor.backend,
         "classes": names,
+        "operating_system": operating_system_name(),
+        "python": sys.version,
+        "opencv": cv2.__version__,
         "camera_config": asdict(config),
     }
     try:

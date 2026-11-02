@@ -12,6 +12,7 @@ YOLO26n 装甲板四关键点模型，绘制检测框、类别、置信度和四
 
 - 通过官方 MVS C 动态库和 Python `ctypes` 连接 USB3 Vision 相机；
 - 枚举设备，显示型号、序列号和固件版本；
+- 自动记录 MVS SDK 版本、Linux 发行版、Python 与 OpenCV 版本；
 - 连续取流，关闭自动曝光/自动增益，设置并回读曝光、增益、ROI 和像素格式；
 - 支持相机原生 `BayerRG8` 与 `BGR8`；
 - `BayerRG8` 使用 SDK 的 `MV_CC_ConvertPixelTypeEx` 转成 BGR，并记录转换耗时；

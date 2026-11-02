@@ -67,6 +67,11 @@ def error_hex(code: int) -> str:
     return f"0x{_unsigned32(code):08X}"
 
 
+def format_sdk_version(value: int) -> str:
+    value = _unsigned32(value)
+    return ".".join(str((value >> shift) & 0xFF) for shift in (24, 16, 8, 0))
+
+
 class MvsError(RuntimeError):
     """An MVS function returned a non-zero status code."""
 
@@ -325,6 +330,12 @@ class MvsSdk:
         # ``MV_CC_Initialize`` is absent in some older packages.
         self.mv_initialize = fn("MV_CC_Initialize", [], required=False)
         self.mv_finalize = fn("MV_CC_Finalize", [], required=False)
+        self.mv_get_sdk_version = fn(
+            "MV_CC_GetSDKVersion",
+            [],
+            restype=ctypes.c_uint,
+            required=False,
+        )
         self.mv_enum = fn("MV_CC_EnumDevices", [ctypes.c_uint, ctypes.POINTER(MvDeviceInfoList)])
         self.mv_create = fn("MV_CC_CreateHandle", [ctypes.POINTER(p), ctypes.POINTER(MvDeviceInfo)])
         self.mv_destroy = fn("MV_CC_DestroyHandle", [p])
@@ -407,6 +418,12 @@ class MvsSdk:
                 )
             )
         return result
+
+    @property
+    def sdk_version(self) -> str | None:
+        if self.mv_get_sdk_version is None:
+            return None
+        return format_sdk_version(int(self.mv_get_sdk_version()))
 
     def create_handle(self, descriptor: CameraDescriptor):
         buffer = (ctypes.c_ubyte * len(descriptor.raw_info)).from_buffer_copy(

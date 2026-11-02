@@ -21,6 +21,7 @@ from mvs_camera.sdk import (
     MvPixelConvertParamEx,
     MvsSdk,
     PixelFormat,
+    format_sdk_version,
 )
 
 
@@ -50,6 +51,7 @@ class CameraCoreTests(unittest.TestCase):
     def test_sdk_constants_and_struct_layout(self):
         self.assertEqual(PixelFormat.BayerRG8, 0x01080009)
         self.assertEqual(PixelFormat.BGR8, 0x02180015)
+        self.assertEqual(format_sdk_version(0x04050003), "4.5.0.3")
         self.assertEqual(ctypes.sizeof(MvFrameOutInfoEx), 256)
         self.assertEqual(ctypes.sizeof(MvFrameOut), 328)
 
