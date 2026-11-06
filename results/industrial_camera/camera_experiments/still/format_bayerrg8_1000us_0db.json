@@ -1,0 +1,2273 @@
+{
+  "label": "format_bayerrg8_1000us_0db",
+  "config": {
+    "serial": null,
+    "index": 0,
+    "exposure_us": 1000.0,
+    "gain_db": 0.0,
+    "pixel_format": "BayerRG8",
+    "roi": null,
+    "frame_rate": null,
+    "timeout_ms": 1000,
+    "settle_frames": 5,
+    "latest_images_only": true
+  },
+  "camera": {
+    "model": "MV-CA016-10UC",
+    "serial": "00L28498186",
+    "firmware": "V1.6.3 201222,20091101",
+    "device_version": "V1.6.3 201222 551351",
+    "mvs_sdk_version": "4.9.0.3",
+    "pixel_format": "BayerRG8",
+    "roi": {
+      "offset_x": 0,
+      "offset_y": 0,
+      "width": 1440,
+      "height": 1080
+    },
+    "exposure_us": 1000.0,
+    "gain_db": 0.0,
+    "config": {
+      "serial": null,
+      "index": 0,
+      "exposure_us": 1000.0,
+      "gain_db": 0.0,
+      "pixel_format": "BayerRG8",
+      "roi": null,
+      "frame_rate": null,
+      "timeout_ms": 1000,
+      "settle_frames": 5,
+      "latest_images_only": true
+    }
+  },
+  "runtime": {
+    "frames": 110,
+    "elapsed_s": 3.0826,
+    "processed_fps": 35.684,
+    "interval_fps_mean": 38.406,
+    "interval_fps_p95": 48.698,
+    "conversion_ms_mean": 4.6901,
+    "conversion_ms_p95": 13.0188,
+    "process_cpu_percent_mean": 70.48,
+    "system_cpu_percent_mean": 83.98,
+    "requested_pixel_format": "BayerRG8",
+    "actual_camera_pixel_format": "BayerRG8",
+    "conversion": "MV_CC_ConvertPixelTypeEx (BayerRG8 -> BGR8)"
+  },
+  "image_quality_mean": {
+    "mean_gray": 0.006091,
+    "std_gray": 0.079818,
+    "saturated_pixel_ratio": 0.0,
+    "dark_pixel_ratio": 1.0,
+    "dark_noise_std": 0.079818,
+    "laplacian_variance": 0.034364,
+    "samples": 22,
+    "saturation_threshold": 250
+  },
+  "timeouts": 0,
+  "raw_image": "results/industrial_camera/camera_experiments/still/format_bayerrg8_1000us_0db_raw.png",
+  "bgr_image": "results/industrial_camera/camera_experiments/still/format_bayerrg8_1000us_0db_bgr.jpg",
+  "video": "results/industrial_camera/camera_experiments/still/format_bayerrg8_1000us_0db.mp4",
+  "resource_log": [
+    {
+      "step": "CreateHandle",
+      "ok": true,
+      "code": "0x00000000",
+      "name": "MV_OK",
+      "detail": "",
+      "time": "2026-11-06 19:54:54"
+    },
+    {
+      "step": "OpenDevice",
+      "ok": true,
+      "code": "0x00000000",
+      "name": "MV_OK",
+      "detail": "",
+      "time": "2026-11-06 19:54:55"
+    },
+    {
+      "step": "AcquisitionMode",
+      "ok": true,
+      "code": "0x00000000",
+      "name": "MV_OK",
+      "detail": "",
+      "time": "2026-11-06 19:54:55"
+    },
+    {
+      "step": "TriggerMode",
+      "ok": true,
+      "code": "0x00000000",
+      "name": "MV_OK",
+      "detail": "",
+      "time": "2026-11-06 19:54:55"
+    },
+    {
+      "step": "ExposureAuto",
+      "ok": true,
+      "code": "0x00000000",
+      "name": "MV_OK",
+      "detail": "",
+      "time": "2026-11-06 19:54:55"
+    },
+    {
+      "step": "ExposureMode",
+      "ok": true,
+      "code": "0x00000000",
+      "name": "MV_OK",
+      "detail": "",
+      "time": "2026-11-06 19:54:55"
+    },
+    {
+      "step": "GainAuto",
+      "ok": true,
+      "code": "0x00000000",
+      "name": "MV_OK",
+      "detail": "",
+      "time": "2026-11-06 19:54:55"
+    },
+    {
+      "step": "PixelFormat",
+      "ok": true,
+      "code": "0x00000000",
+      "name": "MV_OK",
+      "detail": "BayerRG8",
+      "time": "2026-11-06 19:54:55"
+    },
+    {
+      "step": "ExposureTime",
+      "ok": true,
+      "code": "0x00000000",
+      "name": "MV_OK",
+      "detail": "1000.000 us",
+      "time": "2026-11-06 19:54:55"
+    },
+    {
+      "step": "Gain",
+      "ok": true,
+      "code": "0x00000000",
+      "name": "MV_OK",
+      "detail": "0.000 dB",
+      "time": "2026-11-06 19:54:55"
+    },
+    {
+      "step": "SetGrabStrategy_LatestImagesOnly",
+      "ok": true,
+      "code": "0x00000000",
+      "name": "MV_OK",
+      "detail": "",
+      "time": "2026-11-06 19:54:55"
+    },
+    {
+      "step": "StartGrabbing",
+      "ok": true,
+      "code": "0x00000000",
+      "name": "MV_OK",
+      "detail": "",
+      "time": "2026-11-06 19:54:55"
+    },
+    {
+      "step": "GetImageBuffer",
+      "ok": true,
+      "code": "0x00000000",
+      "name": "MV_OK",
+      "detail": "frame=17301513, 1440x1080",
+      "time": "2026-11-06 19:54:55"
+    },
+    {
+      "step": "FreeImageBuffer",
+      "ok": true,
+      "code": "0x00000000",
+      "name": "MV_OK",
+      "detail": "",
+      "time": "2026-11-06 19:54:55"
+    },
+    {
+      "step": "GetImageBuffer",
+      "ok": true,
+      "code": "0x00000000",
+      "name": "MV_OK",
+      "detail": "frame=17301513, 1440x1080",
+      "time": "2026-11-06 19:54:55"
+    },
+    {
+      "step": "FreeImageBuffer",
+      "ok": true,
+      "code": "0x00000000",
+      "name": "MV_OK",
+      "detail": "",
+      "time": "2026-11-06 19:54:55"
+    },
+    {
+      "step": "GetImageBuffer",
+      "ok": true,
+      "code": "0x00000000",
+      "name": "MV_OK",
+      "detail": "frame=17301513, 1440x1080",
+      "time": "2026-11-06 19:54:55"
+    },
+    {
+      "step": "FreeImageBuffer",
+      "ok": true,
+      "code": "0x00000000",
+      "name": "MV_OK",
+      "detail": "",
+      "time": "2026-11-06 19:54:55"
+    },
+    {
+      "step": "GetImageBuffer",
+      "ok": true,
+      "code": "0x00000000",
+      "name": "MV_OK",
+      "detail": "frame=17301513, 1440x1080",
+      "time": "2026-11-06 19:54:55"
+    },
+    {
+      "step": "FreeImageBuffer",
+      "ok": true,
+      "code": "0x00000000",
+      "name": "MV_OK",
+      "detail": "",
+      "time": "2026-11-06 19:54:55"
+    },
+    {
+      "step": "GetImageBuffer",
+      "ok": true,
+      "code": "0x00000000",
+      "name": "MV_OK",
+      "detail": "frame=17301513, 1440x1080",
+      "time": "2026-11-06 19:54:55"
+    },
+    {
+      "step": "FreeImageBuffer",
+      "ok": true,
+      "code": "0x00000000",
+      "name": "MV_OK",
+      "detail": "",
+      "time": "2026-11-06 19:54:55"
+    },
+    {
+      "step": "GetImageBuffer",
+      "ok": true,
+      "code": "0x00000000",
+      "name": "MV_OK",
+      "detail": "frame=17301513, 1440x1080",
+      "time": "2026-11-06 19:54:55"
+    },
+    {
+      "step": "FreeImageBuffer",
+      "ok": true,
+      "code": "0x00000000",
+      "name": "MV_OK",
+      "detail": "",
+      "time": "2026-11-06 19:54:55"
+    },
+    {
+      "step": "GetImageBuffer",
+      "ok": true,
+      "code": "0x00000000",
+      "name": "MV_OK",
+      "detail": "frame=17301513, 1440x1080",
+      "time": "2026-11-06 19:54:55"
+    },
+    {
+      "step": "FreeImageBuffer",
+      "ok": true,
+      "code": "0x00000000",
+      "name": "MV_OK",
+      "detail": "",
+      "time": "2026-11-06 19:54:55"
+    },
+    {
+      "step": "GetImageBuffer",
+      "ok": true,
+      "code": "0x00000000",
+      "name": "MV_OK",
+      "detail": "frame=17301513, 1440x1080",
+      "time": "2026-11-06 19:54:55"
+    },
+    {
+      "step": "FreeImageBuffer",
+      "ok": true,
+      "code": "0x00000000",
+      "name": "MV_OK",
+      "detail": "",
+      "time": "2026-11-06 19:54:55"
+    },
+    {
+      "step": "GetImageBuffer",
+      "ok": true,
+      "code": "0x00000000",
+      "name": "MV_OK",
+      "detail": "frame=17301513, 1440x1080",
+      "time": "2026-11-06 19:54:55"
+    },
+    {
+      "step": "FreeImageBuffer",
+      "ok": true,
+      "code": "0x00000000",
+      "name": "MV_OK",
+      "detail": "",
+      "time": "2026-11-06 19:54:55"
+    },
+    {
+      "step": "GetImageBuffer",
+      "ok": true,
+      "code": "0x00000000",
+      "name": "MV_OK",
+      "detail": "frame=17301513, 1440x1080",
+      "time": "2026-11-06 19:54:55"
+    },
+    {
+      "step": "FreeImageBuffer",
+      "ok": true,
+      "code": "0x00000000",
+      "name": "MV_OK",
+      "detail": "",
+      "time": "2026-11-06 19:54:55"
+    },
+    {
+      "step": "GetImageBuffer",
+      "ok": true,
+      "code": "0x00000000",
+      "name": "MV_OK",
+      "detail": "frame=17301513, 1440x1080",
+      "time": "2026-11-06 19:54:55"
+    },
+    {
+      "step": "FreeImageBuffer",
+      "ok": true,
+      "code": "0x00000000",
+      "name": "MV_OK",
+      "detail": "",
+      "time": "2026-11-06 19:54:55"
+    },
+    {
+      "step": "GetImageBuffer",
+      "ok": true,
+      "code": "0x00000000",
+      "name": "MV_OK",
+      "detail": "frame=17301513, 1440x1080",
+      "time": "2026-11-06 19:54:55"
+    },
+    {
+      "step": "FreeImageBuffer",
+      "ok": true,
+      "code": "0x00000000",
+      "name": "MV_OK",
+      "detail": "",
+      "time": "2026-11-06 19:54:55"
+    },
+    {
+      "step": "GetImageBuffer",
+      "ok": true,
+      "code": "0x00000000",
+      "name": "MV_OK",
+      "detail": "frame=17301513, 1440x1080",
+      "time": "2026-11-06 19:54:55"
+    },
+    {
+      "step": "FreeImageBuffer",
+      "ok": true,
+      "code": "0x00000000",
+      "name": "MV_OK",
+      "detail": "",
+      "time": "2026-11-06 19:54:55"
+    },
+    {
+      "step": "GetImageBuffer",
+      "ok": true,
+      "code": "0x00000000",
+      "name": "MV_OK",
+      "detail": "frame=17301513, 1440x1080",
+      "time": "2026-11-06 19:54:55"
+    },
+    {
+      "step": "FreeImageBuffer",
+      "ok": true,
+      "code": "0x00000000",
+      "name": "MV_OK",
+      "detail": "",
+      "time": "2026-11-06 19:54:55"
+    },
+    {
+      "step": "GetImageBuffer",
+      "ok": true,
+      "code": "0x00000000",
+      "name": "MV_OK",
+      "detail": "frame=17301513, 1440x1080",
+      "time": "2026-11-06 19:54:55"
+    },
+    {
+      "step": "FreeImageBuffer",
+      "ok": true,
+      "code": "0x00000000",
+      "name": "MV_OK",
+      "detail": "",
+      "time": "2026-11-06 19:54:55"
+    },
+    {
+      "step": "GetImageBuffer",
+      "ok": true,
+      "code": "0x00000000",
+      "name": "MV_OK",
+      "detail": "frame=17301513, 1440x1080",
+      "time": "2026-11-06 19:54:55"
+    },
+    {
+      "step": "FreeImageBuffer",
+      "ok": true,
+      "code": "0x00000000",
+      "name": "MV_OK",
+      "detail": "",
+      "time": "2026-11-06 19:54:55"
+    },
+    {
+      "step": "GetImageBuffer",
+      "ok": true,
+      "code": "0x00000000",
+      "name": "MV_OK",
+      "detail": "frame=17301513, 1440x1080",
+      "time": "2026-11-06 19:54:55"
+    },
+    {
+      "step": "FreeImageBuffer",
+      "ok": true,
+      "code": "0x00000000",
+      "name": "MV_OK",
+      "detail": "",
+      "time": "2026-11-06 19:54:55"
+    },
+    {
+      "step": "GetImageBuffer",
+      "ok": true,
+      "code": "0x00000000",
+      "name": "MV_OK",
+      "detail": "frame=17301513, 1440x1080",
+      "time": "2026-11-06 19:54:55"
+    },
+    {
+      "step": "FreeImageBuffer",
+      "ok": true,
+      "code": "0x00000000",
+      "name": "MV_OK",
+      "detail": "",
+      "time": "2026-11-06 19:54:55"
+    },
+    {
+      "step": "GetImageBuffer",
+      "ok": true,
+      "code": "0x00000000",
+      "name": "MV_OK",
+      "detail": "frame=17301513, 1440x1080",
+      "time": "2026-11-06 19:54:55"
+    },
+    {
+      "step": "FreeImageBuffer",
+      "ok": true,
+      "code": "0x00000000",
+      "name": "MV_OK",
+      "detail": "",
+      "time": "2026-11-06 19:54:55"
+    },
+    {
+      "step": "GetImageBuffer",
+      "ok": true,
+      "code": "0x00000000",
+      "name": "MV_OK",
+      "detail": "frame=17301513, 1440x1080",
+      "time": "2026-11-06 19:54:55"
+    },
+    {
+      "step": "FreeImageBuffer",
+      "ok": true,
+      "code": "0x00000000",
+      "name": "MV_OK",
+      "detail": "",
+      "time": "2026-11-06 19:54:55"
+    },
+    {
+      "step": "GetImageBuffer",
+      "ok": true,
+      "code": "0x00000000",
+      "name": "MV_OK",
+      "detail": "frame=17301513, 1440x1080",
+      "time": "2026-11-06 19:54:55"
+    },
+    {
+      "step": "FreeImageBuffer",
+      "ok": true,
+      "code": "0x00000000",
+      "name": "MV_OK",
+      "detail": "",
+      "time": "2026-11-06 19:54:55"
+    },
+    {
+      "step": "GetImageBuffer",
+      "ok": true,
+      "code": "0x00000000",
+      "name": "MV_OK",
+      "detail": "frame=17301513, 1440x1080",
+      "time": "2026-11-06 19:54:55"
+    },
+    {
+      "step": "FreeImageBuffer",
+      "ok": true,
+      "code": "0x00000000",
+      "name": "MV_OK",
+      "detail": "",
+      "time": "2026-11-06 19:54:55"
+    },
+    {
+      "step": "GetImageBuffer",
+      "ok": true,
+      "code": "0x00000000",
+      "name": "MV_OK",
+      "detail": "frame=17301513, 1440x1080",
+      "time": "2026-11-06 19:54:55"
+    },
+    {
+      "step": "FreeImageBuffer",
+      "ok": true,
+      "code": "0x00000000",
+      "name": "MV_OK",
+      "detail": "",
+      "time": "2026-11-06 19:54:55"
+    },
+    {
+      "step": "GetImageBuffer",
+      "ok": true,
+      "code": "0x00000000",
+      "name": "MV_OK",
+      "detail": "frame=17301513, 1440x1080",
+      "time": "2026-11-06 19:54:55"
+    },
+    {
+      "step": "FreeImageBuffer",
+      "ok": true,
+      "code": "0x00000000",
+      "name": "MV_OK",
+      "detail": "",
+      "time": "2026-11-06 19:54:55"
+    },
+    {
+      "step": "GetImageBuffer",
+      "ok": true,
+      "code": "0x00000000",
+      "name": "MV_OK",
+      "detail": "frame=17301513, 1440x1080",
+      "time": "2026-11-06 19:54:55"
+    },
+    {
+      "step": "FreeImageBuffer",
+      "ok": true,
+      "code": "0x00000000",
+      "name": "MV_OK",
+      "detail": "",
+      "time": "2026-11-06 19:54:55"
+    },
+    {
+      "step": "GetImageBuffer",
+      "ok": true,
+      "code": "0x00000000",
+      "name": "MV_OK",
+      "detail": "frame=17301513, 1440x1080",
+      "time": "2026-11-06 19:54:56"
+    },
+    {
+      "step": "FreeImageBuffer",
+      "ok": true,
+      "code": "0x00000000",
+      "name": "MV_OK",
+      "detail": "",
+      "time": "2026-11-06 19:54:56"
+    },
+    {
+      "step": "GetImageBuffer",
+      "ok": true,
+      "code": "0x00000000",
+      "name": "MV_OK",
+      "detail": "frame=17301513, 1440x1080",
+      "time": "2026-11-06 19:54:56"
+    },
+    {
+      "step": "FreeImageBuffer",
+      "ok": true,
+      "code": "0x00000000",
+      "name": "MV_OK",
+      "detail": "",
+      "time": "2026-11-06 19:54:56"
+    },
+    {
+      "step": "GetImageBuffer",
+      "ok": true,
+      "code": "0x00000000",
+      "name": "MV_OK",
+      "detail": "frame=17301513, 1440x1080",
+      "time": "2026-11-06 19:54:56"
+    },
+    {
+      "step": "FreeImageBuffer",
+      "ok": true,
+      "code": "0x00000000",
+      "name": "MV_OK",
+      "detail": "",
+      "time": "2026-11-06 19:54:56"
+    },
+    {
+      "step": "GetImageBuffer",
+      "ok": true,
+      "code": "0x00000000",
+      "name": "MV_OK",
+      "detail": "frame=17301513, 1440x1080",
+      "time": "2026-11-06 19:54:56"
+    },
+    {
+      "step": "FreeImageBuffer",
+      "ok": true,
+      "code": "0x00000000",
+      "name": "MV_OK",
+      "detail": "",
+      "time": "2026-11-06 19:54:56"
+    },
+    {
+      "step": "GetImageBuffer",
+      "ok": true,
+      "code": "0x00000000",
+      "name": "MV_OK",
+      "detail": "frame=17301513, 1440x1080",
+      "time": "2026-11-06 19:54:56"
+    },
+    {
+      "step": "FreeImageBuffer",
+      "ok": true,
+      "code": "0x00000000",
+      "name": "MV_OK",
+      "detail": "",
+      "time": "2026-11-06 19:54:56"
+    },
+    {
+      "step": "GetImageBuffer",
+      "ok": true,
+      "code": "0x00000000",
+      "name": "MV_OK",
+      "detail": "frame=17301513, 1440x1080",
+      "time": "2026-11-06 19:54:56"
+    },
+    {
+      "step": "FreeImageBuffer",
+      "ok": true,
+      "code": "0x00000000",
+      "name": "MV_OK",
+      "detail": "",
+      "time": "2026-11-06 19:54:56"
+    },
+    {
+      "step": "GetImageBuffer",
+      "ok": true,
+      "code": "0x00000000",
+      "name": "MV_OK",
+      "detail": "frame=17301513, 1440x1080",
+      "time": "2026-11-06 19:54:56"
+    },
+    {
+      "step": "FreeImageBuffer",
+      "ok": true,
+      "code": "0x00000000",
+      "name": "MV_OK",
+      "detail": "",
+      "time": "2026-11-06 19:54:56"
+    },
+    {
+      "step": "GetImageBuffer",
+      "ok": true,
+      "code": "0x00000000",
+      "name": "MV_OK",
+      "detail": "frame=17301513, 1440x1080",
+      "time": "2026-11-06 19:54:56"
+    },
+    {
+      "step": "FreeImageBuffer",
+      "ok": true,
+      "code": "0x00000000",
+      "name": "MV_OK",
+      "detail": "",
+      "time": "2026-11-06 19:54:56"
+    },
+    {
+      "step": "GetImageBuffer",
+      "ok": true,
+      "code": "0x00000000",
+      "name": "MV_OK",
+      "detail": "frame=17301513, 1440x1080",
+      "time": "2026-11-06 19:54:56"
+    },
+    {
+      "step": "FreeImageBuffer",
+      "ok": true,
+      "code": "0x00000000",
+      "name": "MV_OK",
+      "detail": "",
+      "time": "2026-11-06 19:54:56"
+    },
+    {
+      "step": "GetImageBuffer",
+      "ok": true,
+      "code": "0x00000000",
+      "name": "MV_OK",
+      "detail": "frame=17301513, 1440x1080",
+      "time": "2026-11-06 19:54:56"
+    },
+    {
+      "step": "FreeImageBuffer",
+      "ok": true,
+      "code": "0x00000000",
+      "name": "MV_OK",
+      "detail": "",
+      "time": "2026-11-06 19:54:56"
+    },
+    {
+      "step": "GetImageBuffer",
+      "ok": true,
+      "code": "0x00000000",
+      "name": "MV_OK",
+      "detail": "frame=17301513, 1440x1080",
+      "time": "2026-11-06 19:54:56"
+    },
+    {
+      "step": "FreeImageBuffer",
+      "ok": true,
+      "code": "0x00000000",
+      "name": "MV_OK",
+      "detail": "",
+      "time": "2026-11-06 19:54:56"
+    },
+    {
+      "step": "GetImageBuffer",
+      "ok": true,
+      "code": "0x00000000",
+      "name": "MV_OK",
+      "detail": "frame=17301513, 1440x1080",
+      "time": "2026-11-06 19:54:56"
+    },
+    {
+      "step": "FreeImageBuffer",
+      "ok": true,
+      "code": "0x00000000",
+      "name": "MV_OK",
+      "detail": "",
+      "time": "2026-11-06 19:54:56"
+    },
+    {
+      "step": "GetImageBuffer",
+      "ok": true,
+      "code": "0x00000000",
+      "name": "MV_OK",
+      "detail": "frame=17301513, 1440x1080",
+      "time": "2026-11-06 19:54:56"
+    },
+    {
+      "step": "FreeImageBuffer",
+      "ok": true,
+      "code": "0x00000000",
+      "name": "MV_OK",
+      "detail": "",
+      "time": "2026-11-06 19:54:56"
+    },
+    {
+      "step": "GetImageBuffer",
+      "ok": true,
+      "code": "0x00000000",
+      "name": "MV_OK",
+      "detail": "frame=17301513, 1440x1080",
+      "time": "2026-11-06 19:54:56"
+    },
+    {
+      "step": "FreeImageBuffer",
+      "ok": true,
+      "code": "0x00000000",
+      "name": "MV_OK",
+      "detail": "",
+      "time": "2026-11-06 19:54:56"
+    },
+    {
+      "step": "GetImageBuffer",
+      "ok": true,
+      "code": "0x00000000",
+      "name": "MV_OK",
+      "detail": "frame=17301513, 1440x1080",
+      "time": "2026-11-06 19:54:56"
+    },
+    {
+      "step": "FreeImageBuffer",
+      "ok": true,
+      "code": "0x00000000",
+      "name": "MV_OK",
+      "detail": "",
+      "time": "2026-11-06 19:54:56"
+    },
+    {
+      "step": "GetImageBuffer",
+      "ok": true,
+      "code": "0x00000000",
+      "name": "MV_OK",
+      "detail": "frame=17301513, 1440x1080",
+      "time": "2026-11-06 19:54:56"
+    },
+    {
+      "step": "FreeImageBuffer",
+      "ok": true,
+      "code": "0x00000000",
+      "name": "MV_OK",
+      "detail": "",
+      "time": "2026-11-06 19:54:56"
+    },
+    {
+      "step": "GetImageBuffer",
+      "ok": true,
+      "code": "0x00000000",
+      "name": "MV_OK",
+      "detail": "frame=17301513, 1440x1080",
+      "time": "2026-11-06 19:54:56"
+    },
+    {
+      "step": "FreeImageBuffer",
+      "ok": true,
+      "code": "0x00000000",
+      "name": "MV_OK",
+      "detail": "",
+      "time": "2026-11-06 19:54:56"
+    },
+    {
+      "step": "GetImageBuffer",
+      "ok": true,
+      "code": "0x00000000",
+      "name": "MV_OK",
+      "detail": "frame=17301513, 1440x1080",
+      "time": "2026-11-06 19:54:56"
+    },
+    {
+      "step": "FreeImageBuffer",
+      "ok": true,
+      "code": "0x00000000",
+      "name": "MV_OK",
+      "detail": "",
+      "time": "2026-11-06 19:54:56"
+    },
+    {
+      "step": "GetImageBuffer",
+      "ok": true,
+      "code": "0x00000000",
+      "name": "MV_OK",
+      "detail": "frame=17301513, 1440x1080",
+      "time": "2026-11-06 19:54:56"
+    },
+    {
+      "step": "FreeImageBuffer",
+      "ok": true,
+      "code": "0x00000000",
+      "name": "MV_OK",
+      "detail": "",
+      "time": "2026-11-06 19:54:56"
+    },
+    {
+      "step": "GetImageBuffer",
+      "ok": true,
+      "code": "0x00000000",
+      "name": "MV_OK",
+      "detail": "frame=17301513, 1440x1080",
+      "time": "2026-11-06 19:54:56"
+    },
+    {
+      "step": "FreeImageBuffer",
+      "ok": true,
+      "code": "0x00000000",
+      "name": "MV_OK",
+      "detail": "",
+      "time": "2026-11-06 19:54:56"
+    },
+    {
+      "step": "GetImageBuffer",
+      "ok": true,
+      "code": "0x00000000",
+      "name": "MV_OK",
+      "detail": "frame=17301513, 1440x1080",
+      "time": "2026-11-06 19:54:56"
+    },
+    {
+      "step": "FreeImageBuffer",
+      "ok": true,
+      "code": "0x00000000",
+      "name": "MV_OK",
+      "detail": "",
+      "time": "2026-11-06 19:54:56"
+    },
+    {
+      "step": "GetImageBuffer",
+      "ok": true,
+      "code": "0x00000000",
+      "name": "MV_OK",
+      "detail": "frame=17301513, 1440x1080",
+      "time": "2026-11-06 19:54:56"
+    },
+    {
+      "step": "FreeImageBuffer",
+      "ok": true,
+      "code": "0x00000000",
+      "name": "MV_OK",
+      "detail": "",
+      "time": "2026-11-06 19:54:56"
+    },
+    {
+      "step": "GetImageBuffer",
+      "ok": true,
+      "code": "0x00000000",
+      "name": "MV_OK",
+      "detail": "frame=17301513, 1440x1080",
+      "time": "2026-11-06 19:54:56"
+    },
+    {
+      "step": "FreeImageBuffer",
+      "ok": true,
+      "code": "0x00000000",
+      "name": "MV_OK",
+      "detail": "",
+      "time": "2026-11-06 19:54:56"
+    },
+    {
+      "step": "GetImageBuffer",
+      "ok": true,
+      "code": "0x00000000",
+      "name": "MV_OK",
+      "detail": "frame=17301513, 1440x1080",
+      "time": "2026-11-06 19:54:56"
+    },
+    {
+      "step": "FreeImageBuffer",
+      "ok": true,
+      "code": "0x00000000",
+      "name": "MV_OK",
+      "detail": "",
+      "time": "2026-11-06 19:54:56"
+    },
+    {
+      "step": "GetImageBuffer",
+      "ok": true,
+      "code": "0x00000000",
+      "name": "MV_OK",
+      "detail": "frame=17301513, 1440x1080",
+      "time": "2026-11-06 19:54:56"
+    },
+    {
+      "step": "FreeImageBuffer",
+      "ok": true,
+      "code": "0x00000000",
+      "name": "MV_OK",
+      "detail": "",
+      "time": "2026-11-06 19:54:56"
+    },
+    {
+      "step": "GetImageBuffer",
+      "ok": true,
+      "code": "0x00000000",
+      "name": "MV_OK",
+      "detail": "frame=17301513, 1440x1080",
+      "time": "2026-11-06 19:54:56"
+    },
+    {
+      "step": "FreeImageBuffer",
+      "ok": true,
+      "code": "0x00000000",
+      "name": "MV_OK",
+      "detail": "",
+      "time": "2026-11-06 19:54:56"
+    },
+    {
+      "step": "GetImageBuffer",
+      "ok": true,
+      "code": "0x00000000",
+      "name": "MV_OK",
+      "detail": "frame=17301513, 1440x1080",
+      "time": "2026-11-06 19:54:56"
+    },
+    {
+      "step": "FreeImageBuffer",
+      "ok": true,
+      "code": "0x00000000",
+      "name": "MV_OK",
+      "detail": "",
+      "time": "2026-11-06 19:54:56"
+    },
+    {
+      "step": "GetImageBuffer",
+      "ok": true,
+      "code": "0x00000000",
+      "name": "MV_OK",
+      "detail": "frame=17301513, 1440x1080",
+      "time": "2026-11-06 19:54:56"
+    },
+    {
+      "step": "FreeImageBuffer",
+      "ok": true,
+      "code": "0x00000000",
+      "name": "MV_OK",
+      "detail": "",
+      "time": "2026-11-06 19:54:56"
+    },
+    {
+      "step": "GetImageBuffer",
+      "ok": true,
+      "code": "0x00000000",
+      "name": "MV_OK",
+      "detail": "frame=17301513, 1440x1080",
+      "time": "2026-11-06 19:54:56"
+    },
+    {
+      "step": "FreeImageBuffer",
+      "ok": true,
+      "code": "0x00000000",
+      "name": "MV_OK",
+      "detail": "",
+      "time": "2026-11-06 19:54:56"
+    },
+    {
+      "step": "GetImageBuffer",
+      "ok": true,
+      "code": "0x00000000",
+      "name": "MV_OK",
+      "detail": "frame=17301513, 1440x1080",
+      "time": "2026-11-06 19:54:56"
+    },
+    {
+      "step": "FreeImageBuffer",
+      "ok": true,
+      "code": "0x00000000",
+      "name": "MV_OK",
+      "detail": "",
+      "time": "2026-11-06 19:54:56"
+    },
+    {
+      "step": "GetImageBuffer",
+      "ok": true,
+      "code": "0x00000000",
+      "name": "MV_OK",
+      "detail": "frame=17301513, 1440x1080",
+      "time": "2026-11-06 19:54:56"
+    },
+    {
+      "step": "FreeImageBuffer",
+      "ok": true,
+      "code": "0x00000000",
+      "name": "MV_OK",
+      "detail": "",
+      "time": "2026-11-06 19:54:56"
+    },
+    {
+      "step": "GetImageBuffer",
+      "ok": true,
+      "code": "0x00000000",
+      "name": "MV_OK",
+      "detail": "frame=17301513, 1440x1080",
+      "time": "2026-11-06 19:54:56"
+    },
+    {
+      "step": "FreeImageBuffer",
+      "ok": true,
+      "code": "0x00000000",
+      "name": "MV_OK",
+      "detail": "",
+      "time": "2026-11-06 19:54:56"
+    },
+    {
+      "step": "GetImageBuffer",
+      "ok": true,
+      "code": "0x00000000",
+      "name": "MV_OK",
+      "detail": "frame=17301513, 1440x1080",
+      "time": "2026-11-06 19:54:56"
+    },
+    {
+      "step": "FreeImageBuffer",
+      "ok": true,
+      "code": "0x00000000",
+      "name": "MV_OK",
+      "detail": "",
+      "time": "2026-11-06 19:54:56"
+    },
+    {
+      "step": "GetImageBuffer",
+      "ok": true,
+      "code": "0x00000000",
+      "name": "MV_OK",
+      "detail": "frame=17301513, 1440x1080",
+      "time": "2026-11-06 19:54:56"
+    },
+    {
+      "step": "FreeImageBuffer",
+      "ok": true,
+      "code": "0x00000000",
+      "name": "MV_OK",
+      "detail": "",
+      "time": "2026-11-06 19:54:56"
+    },
+    {
+      "step": "GetImageBuffer",
+      "ok": true,
+      "code": "0x00000000",
+      "name": "MV_OK",
+      "detail": "frame=17301513, 1440x1080",
+      "time": "2026-11-06 19:54:56"
+    },
+    {
+      "step": "FreeImageBuffer",
+      "ok": true,
+      "code": "0x00000000",
+      "name": "MV_OK",
+      "detail": "",
+      "time": "2026-11-06 19:54:56"
+    },
+    {
+      "step": "GetImageBuffer",
+      "ok": true,
+      "code": "0x00000000",
+      "name": "MV_OK",
+      "detail": "frame=17301513, 1440x1080",
+      "time": "2026-11-06 19:54:56"
+    },
+    {
+      "step": "FreeImageBuffer",
+      "ok": true,
+      "code": "0x00000000",
+      "name": "MV_OK",
+      "detail": "",
+      "time": "2026-11-06 19:54:56"
+    },
+    {
+      "step": "GetImageBuffer",
+      "ok": true,
+      "code": "0x00000000",
+      "name": "MV_OK",
+      "detail": "frame=17301513, 1440x1080",
+      "time": "2026-11-06 19:54:56"
+    },
+    {
+      "step": "FreeImageBuffer",
+      "ok": true,
+      "code": "0x00000000",
+      "name": "MV_OK",
+      "detail": "",
+      "time": "2026-11-06 19:54:56"
+    },
+    {
+      "step": "GetImageBuffer",
+      "ok": true,
+      "code": "0x00000000",
+      "name": "MV_OK",
+      "detail": "frame=17301513, 1440x1080",
+      "time": "2026-11-06 19:54:56"
+    },
+    {
+      "step": "FreeImageBuffer",
+      "ok": true,
+      "code": "0x00000000",
+      "name": "MV_OK",
+      "detail": "",
+      "time": "2026-11-06 19:54:56"
+    },
+    {
+      "step": "GetImageBuffer",
+      "ok": true,
+      "code": "0x00000000",
+      "name": "MV_OK",
+      "detail": "frame=17301513, 1440x1080",
+      "time": "2026-11-06 19:54:56"
+    },
+    {
+      "step": "FreeImageBuffer",
+      "ok": true,
+      "code": "0x00000000",
+      "name": "MV_OK",
+      "detail": "",
+      "time": "2026-11-06 19:54:56"
+    },
+    {
+      "step": "GetImageBuffer",
+      "ok": true,
+      "code": "0x00000000",
+      "name": "MV_OK",
+      "detail": "frame=17301513, 1440x1080",
+      "time": "2026-11-06 19:54:56"
+    },
+    {
+      "step": "FreeImageBuffer",
+      "ok": true,
+      "code": "0x00000000",
+      "name": "MV_OK",
+      "detail": "",
+      "time": "2026-11-06 19:54:56"
+    },
+    {
+      "step": "GetImageBuffer",
+      "ok": true,
+      "code": "0x00000000",
+      "name": "MV_OK",
+      "detail": "frame=17301513, 1440x1080",
+      "time": "2026-11-06 19:54:56"
+    },
+    {
+      "step": "FreeImageBuffer",
+      "ok": true,
+      "code": "0x00000000",
+      "name": "MV_OK",
+      "detail": "",
+      "time": "2026-11-06 19:54:56"
+    },
+    {
+      "step": "GetImageBuffer",
+      "ok": true,
+      "code": "0x00000000",
+      "name": "MV_OK",
+      "detail": "frame=17301513, 1440x1080",
+      "time": "2026-11-06 19:54:56"
+    },
+    {
+      "step": "FreeImageBuffer",
+      "ok": true,
+      "code": "0x00000000",
+      "name": "MV_OK",
+      "detail": "",
+      "time": "2026-11-06 19:54:56"
+    },
+    {
+      "step": "GetImageBuffer",
+      "ok": true,
+      "code": "0x00000000",
+      "name": "MV_OK",
+      "detail": "frame=17301513, 1440x1080",
+      "time": "2026-11-06 19:54:56"
+    },
+    {
+      "step": "FreeImageBuffer",
+      "ok": true,
+      "code": "0x00000000",
+      "name": "MV_OK",
+      "detail": "",
+      "time": "2026-11-06 19:54:56"
+    },
+    {
+      "step": "GetImageBuffer",
+      "ok": true,
+      "code": "0x00000000",
+      "name": "MV_OK",
+      "detail": "frame=17301513, 1440x1080",
+      "time": "2026-11-06 19:54:56"
+    },
+    {
+      "step": "FreeImageBuffer",
+      "ok": true,
+      "code": "0x00000000",
+      "name": "MV_OK",
+      "detail": "",
+      "time": "2026-11-06 19:54:56"
+    },
+    {
+      "step": "GetImageBuffer",
+      "ok": true,
+      "code": "0x00000000",
+      "name": "MV_OK",
+      "detail": "frame=17301513, 1440x1080",
+      "time": "2026-11-06 19:54:56"
+    },
+    {
+      "step": "FreeImageBuffer",
+      "ok": true,
+      "code": "0x00000000",
+      "name": "MV_OK",
+      "detail": "",
+      "time": "2026-11-06 19:54:56"
+    },
+    {
+      "step": "GetImageBuffer",
+      "ok": true,
+      "code": "0x00000000",
+      "name": "MV_OK",
+      "detail": "frame=17301513, 1440x1080",
+      "time": "2026-11-06 19:54:56"
+    },
+    {
+      "step": "FreeImageBuffer",
+      "ok": true,
+      "code": "0x00000000",
+      "name": "MV_OK",
+      "detail": "",
+      "time": "2026-11-06 19:54:56"
+    },
+    {
+      "step": "GetImageBuffer",
+      "ok": true,
+      "code": "0x00000000",
+      "name": "MV_OK",
+      "detail": "frame=17301513, 1440x1080",
+      "time": "2026-11-06 19:54:56"
+    },
+    {
+      "step": "FreeImageBuffer",
+      "ok": true,
+      "code": "0x00000000",
+      "name": "MV_OK",
+      "detail": "",
+      "time": "2026-11-06 19:54:56"
+    },
+    {
+      "step": "GetImageBuffer",
+      "ok": true,
+      "code": "0x00000000",
+      "name": "MV_OK",
+      "detail": "frame=17301513, 1440x1080",
+      "time": "2026-11-06 19:54:57"
+    },
+    {
+      "step": "FreeImageBuffer",
+      "ok": true,
+      "code": "0x00000000",
+      "name": "MV_OK",
+      "detail": "",
+      "time": "2026-11-06 19:54:57"
+    },
+    {
+      "step": "GetImageBuffer",
+      "ok": true,
+      "code": "0x00000000",
+      "name": "MV_OK",
+      "detail": "frame=17301513, 1440x1080",
+      "time": "2026-11-06 19:54:57"
+    },
+    {
+      "step": "FreeImageBuffer",
+      "ok": true,
+      "code": "0x00000000",
+      "name": "MV_OK",
+      "detail": "",
+      "time": "2026-11-06 19:54:57"
+    },
+    {
+      "step": "GetImageBuffer",
+      "ok": true,
+      "code": "0x00000000",
+      "name": "MV_OK",
+      "detail": "frame=17301513, 1440x1080",
+      "time": "2026-11-06 19:54:57"
+    },
+    {
+      "step": "FreeImageBuffer",
+      "ok": true,
+      "code": "0x00000000",
+      "name": "MV_OK",
+      "detail": "",
+      "time": "2026-11-06 19:54:57"
+    },
+    {
+      "step": "GetImageBuffer",
+      "ok": true,
+      "code": "0x00000000",
+      "name": "MV_OK",
+      "detail": "frame=17301513, 1440x1080",
+      "time": "2026-11-06 19:54:57"
+    },
+    {
+      "step": "FreeImageBuffer",
+      "ok": true,
+      "code": "0x00000000",
+      "name": "MV_OK",
+      "detail": "",
+      "time": "2026-11-06 19:54:57"
+    },
+    {
+      "step": "GetImageBuffer",
+      "ok": true,
+      "code": "0x00000000",
+      "name": "MV_OK",
+      "detail": "frame=17301513, 1440x1080",
+      "time": "2026-11-06 19:54:57"
+    },
+    {
+      "step": "FreeImageBuffer",
+      "ok": true,
+      "code": "0x00000000",
+      "name": "MV_OK",
+      "detail": "",
+      "time": "2026-11-06 19:54:57"
+    },
+    {
+      "step": "GetImageBuffer",
+      "ok": true,
+      "code": "0x00000000",
+      "name": "MV_OK",
+      "detail": "frame=17301513, 1440x1080",
+      "time": "2026-11-06 19:54:57"
+    },
+    {
+      "step": "FreeImageBuffer",
+      "ok": true,
+      "code": "0x00000000",
+      "name": "MV_OK",
+      "detail": "",
+      "time": "2026-11-06 19:54:57"
+    },
+    {
+      "step": "GetImageBuffer",
+      "ok": true,
+      "code": "0x00000000",
+      "name": "MV_OK",
+      "detail": "frame=17301513, 1440x1080",
+      "time": "2026-11-06 19:54:57"
+    },
+    {
+      "step": "FreeImageBuffer",
+      "ok": true,
+      "code": "0x00000000",
+      "name": "MV_OK",
+      "detail": "",
+      "time": "2026-11-06 19:54:57"
+    },
+    {
+      "step": "GetImageBuffer",
+      "ok": true,
+      "code": "0x00000000",
+      "name": "MV_OK",
+      "detail": "frame=17301513, 1440x1080",
+      "time": "2026-11-06 19:54:57"
+    },
+    {
+      "step": "FreeImageBuffer",
+      "ok": true,
+      "code": "0x00000000",
+      "name": "MV_OK",
+      "detail": "",
+      "time": "2026-11-06 19:54:57"
+    },
+    {
+      "step": "GetImageBuffer",
+      "ok": true,
+      "code": "0x00000000",
+      "name": "MV_OK",
+      "detail": "frame=17301513, 1440x1080",
+      "time": "2026-11-06 19:54:57"
+    },
+    {
+      "step": "FreeImageBuffer",
+      "ok": true,
+      "code": "0x00000000",
+      "name": "MV_OK",
+      "detail": "",
+      "time": "2026-11-06 19:54:57"
+    },
+    {
+      "step": "GetImageBuffer",
+      "ok": true,
+      "code": "0x00000000",
+      "name": "MV_OK",
+      "detail": "frame=17301513, 1440x1080",
+      "time": "2026-11-06 19:54:57"
+    },
+    {
+      "step": "FreeImageBuffer",
+      "ok": true,
+      "code": "0x00000000",
+      "name": "MV_OK",
+      "detail": "",
+      "time": "2026-11-06 19:54:57"
+    },
+    {
+      "step": "GetImageBuffer",
+      "ok": true,
+      "code": "0x00000000",
+      "name": "MV_OK",
+      "detail": "frame=17301513, 1440x1080",
+      "time": "2026-11-06 19:54:57"
+    },
+    {
+      "step": "FreeImageBuffer",
+      "ok": true,
+      "code": "0x00000000",
+      "name": "MV_OK",
+      "detail": "",
+      "time": "2026-11-06 19:54:57"
+    },
+    {
+      "step": "GetImageBuffer",
+      "ok": true,
+      "code": "0x00000000",
+      "name": "MV_OK",
+      "detail": "frame=17301513, 1440x1080",
+      "time": "2026-11-06 19:54:57"
+    },
+    {
+      "step": "FreeImageBuffer",
+      "ok": true,
+      "code": "0x00000000",
+      "name": "MV_OK",
+      "detail": "",
+      "time": "2026-11-06 19:54:57"
+    },
+    {
+      "step": "GetImageBuffer",
+      "ok": true,
+      "code": "0x00000000",
+      "name": "MV_OK",
+      "detail": "frame=17301513, 1440x1080",
+      "time": "2026-11-06 19:54:57"
+    },
+    {
+      "step": "FreeImageBuffer",
+      "ok": true,
+      "code": "0x00000000",
+      "name": "MV_OK",
+      "detail": "",
+      "time": "2026-11-06 19:54:57"
+    },
+    {
+      "step": "GetImageBuffer",
+      "ok": true,
+      "code": "0x00000000",
+      "name": "MV_OK",
+      "detail": "frame=17301513, 1440x1080",
+      "time": "2026-11-06 19:54:57"
+    },
+    {
+      "step": "FreeImageBuffer",
+      "ok": true,
+      "code": "0x00000000",
+      "name": "MV_OK",
+      "detail": "",
+      "time": "2026-11-06 19:54:57"
+    },
+    {
+      "step": "GetImageBuffer",
+      "ok": true,
+      "code": "0x00000000",
+      "name": "MV_OK",
+      "detail": "frame=17301513, 1440x1080",
+      "time": "2026-11-06 19:54:57"
+    },
+    {
+      "step": "FreeImageBuffer",
+      "ok": true,
+      "code": "0x00000000",
+      "name": "MV_OK",
+      "detail": "",
+      "time": "2026-11-06 19:54:57"
+    },
+    {
+      "step": "GetImageBuffer",
+      "ok": true,
+      "code": "0x00000000",
+      "name": "MV_OK",
+      "detail": "frame=17301513, 1440x1080",
+      "time": "2026-11-06 19:54:57"
+    },
+    {
+      "step": "FreeImageBuffer",
+      "ok": true,
+      "code": "0x00000000",
+      "name": "MV_OK",
+      "detail": "",
+      "time": "2026-11-06 19:54:57"
+    },
+    {
+      "step": "GetImageBuffer",
+      "ok": true,
+      "code": "0x00000000",
+      "name": "MV_OK",
+      "detail": "frame=17301513, 1440x1080",
+      "time": "2026-11-06 19:54:57"
+    },
+    {
+      "step": "FreeImageBuffer",
+      "ok": true,
+      "code": "0x00000000",
+      "name": "MV_OK",
+      "detail": "",
+      "time": "2026-11-06 19:54:57"
+    },
+    {
+      "step": "GetImageBuffer",
+      "ok": true,
+      "code": "0x00000000",
+      "name": "MV_OK",
+      "detail": "frame=17301513, 1440x1080",
+      "time": "2026-11-06 19:54:57"
+    },
+    {
+      "step": "FreeImageBuffer",
+      "ok": true,
+      "code": "0x00000000",
+      "name": "MV_OK",
+      "detail": "",
+      "time": "2026-11-06 19:54:57"
+    },
+    {
+      "step": "GetImageBuffer",
+      "ok": true,
+      "code": "0x00000000",
+      "name": "MV_OK",
+      "detail": "frame=17301513, 1440x1080",
+      "time": "2026-11-06 19:54:57"
+    },
+    {
+      "step": "FreeImageBuffer",
+      "ok": true,
+      "code": "0x00000000",
+      "name": "MV_OK",
+      "detail": "",
+      "time": "2026-11-06 19:54:57"
+    },
+    {
+      "step": "GetImageBuffer",
+      "ok": true,
+      "code": "0x00000000",
+      "name": "MV_OK",
+      "detail": "frame=17301513, 1440x1080",
+      "time": "2026-11-06 19:54:57"
+    },
+    {
+      "step": "FreeImageBuffer",
+      "ok": true,
+      "code": "0x00000000",
+      "name": "MV_OK",
+      "detail": "",
+      "time": "2026-11-06 19:54:57"
+    },
+    {
+      "step": "GetImageBuffer",
+      "ok": true,
+      "code": "0x00000000",
+      "name": "MV_OK",
+      "detail": "frame=17301513, 1440x1080",
+      "time": "2026-11-06 19:54:57"
+    },
+    {
+      "step": "FreeImageBuffer",
+      "ok": true,
+      "code": "0x00000000",
+      "name": "MV_OK",
+      "detail": "",
+      "time": "2026-11-06 19:54:57"
+    },
+    {
+      "step": "GetImageBuffer",
+      "ok": true,
+      "code": "0x00000000",
+      "name": "MV_OK",
+      "detail": "frame=17301513, 1440x1080",
+      "time": "2026-11-06 19:54:57"
+    },
+    {
+      "step": "FreeImageBuffer",
+      "ok": true,
+      "code": "0x00000000",
+      "name": "MV_OK",
+      "detail": "",
+      "time": "2026-11-06 19:54:57"
+    },
+    {
+      "step": "GetImageBuffer",
+      "ok": true,
+      "code": "0x00000000",
+      "name": "MV_OK",
+      "detail": "frame=17301513, 1440x1080",
+      "time": "2026-11-06 19:54:57"
+    },
+    {
+      "step": "FreeImageBuffer",
+      "ok": true,
+      "code": "0x00000000",
+      "name": "MV_OK",
+      "detail": "",
+      "time": "2026-11-06 19:54:57"
+    },
+    {
+      "step": "GetImageBuffer",
+      "ok": true,
+      "code": "0x00000000",
+      "name": "MV_OK",
+      "detail": "frame=17301513, 1440x1080",
+      "time": "2026-11-06 19:54:57"
+    },
+    {
+      "step": "FreeImageBuffer",
+      "ok": true,
+      "code": "0x00000000",
+      "name": "MV_OK",
+      "detail": "",
+      "time": "2026-11-06 19:54:57"
+    },
+    {
+      "step": "GetImageBuffer",
+      "ok": true,
+      "code": "0x00000000",
+      "name": "MV_OK",
+      "detail": "frame=17301513, 1440x1080",
+      "time": "2026-11-06 19:54:57"
+    },
+    {
+      "step": "FreeImageBuffer",
+      "ok": true,
+      "code": "0x00000000",
+      "name": "MV_OK",
+      "detail": "",
+      "time": "2026-11-06 19:54:57"
+    },
+    {
+      "step": "GetImageBuffer",
+      "ok": true,
+      "code": "0x00000000",
+      "name": "MV_OK",
+      "detail": "frame=17301513, 1440x1080",
+      "time": "2026-11-06 19:54:57"
+    },
+    {
+      "step": "FreeImageBuffer",
+      "ok": true,
+      "code": "0x00000000",
+      "name": "MV_OK",
+      "detail": "",
+      "time": "2026-11-06 19:54:57"
+    },
+    {
+      "step": "GetImageBuffer",
+      "ok": true,
+      "code": "0x00000000",
+      "name": "MV_OK",
+      "detail": "frame=17301513, 1440x1080",
+      "time": "2026-11-06 19:54:57"
+    },
+    {
+      "step": "FreeImageBuffer",
+      "ok": true,
+      "code": "0x00000000",
+      "name": "MV_OK",
+      "detail": "",
+      "time": "2026-11-06 19:54:57"
+    },
+    {
+      "step": "GetImageBuffer",
+      "ok": true,
+      "code": "0x00000000",
+      "name": "MV_OK",
+      "detail": "frame=17301513, 1440x1080",
+      "time": "2026-11-06 19:54:57"
+    },
+    {
+      "step": "FreeImageBuffer",
+      "ok": true,
+      "code": "0x00000000",
+      "name": "MV_OK",
+      "detail": "",
+      "time": "2026-11-06 19:54:57"
+    },
+    {
+      "step": "GetImageBuffer",
+      "ok": true,
+      "code": "0x00000000",
+      "name": "MV_OK",
+      "detail": "frame=17301513, 1440x1080",
+      "time": "2026-11-06 19:54:57"
+    },
+    {
+      "step": "FreeImageBuffer",
+      "ok": true,
+      "code": "0x00000000",
+      "name": "MV_OK",
+      "detail": "",
+      "time": "2026-11-06 19:54:57"
+    },
+    {
+      "step": "GetImageBuffer",
+      "ok": true,
+      "code": "0x00000000",
+      "name": "MV_OK",
+      "detail": "frame=17301513, 1440x1080",
+      "time": "2026-11-06 19:54:57"
+    },
+    {
+      "step": "FreeImageBuffer",
+      "ok": true,
+      "code": "0x00000000",
+      "name": "MV_OK",
+      "detail": "",
+      "time": "2026-11-06 19:54:57"
+    },
+    {
+      "step": "GetImageBuffer",
+      "ok": true,
+      "code": "0x00000000",
+      "name": "MV_OK",
+      "detail": "frame=17301513, 1440x1080",
+      "time": "2026-11-06 19:54:57"
+    },
+    {
+      "step": "FreeImageBuffer",
+      "ok": true,
+      "code": "0x00000000",
+      "name": "MV_OK",
+      "detail": "",
+      "time": "2026-11-06 19:54:57"
+    },
+    {
+      "step": "GetImageBuffer",
+      "ok": true,
+      "code": "0x00000000",
+      "name": "MV_OK",
+      "detail": "frame=17301513, 1440x1080",
+      "time": "2026-11-06 19:54:57"
+    },
+    {
+      "step": "FreeImageBuffer",
+      "ok": true,
+      "code": "0x00000000",
+      "name": "MV_OK",
+      "detail": "",
+      "time": "2026-11-06 19:54:57"
+    },
+    {
+      "step": "GetImageBuffer",
+      "ok": true,
+      "code": "0x00000000",
+      "name": "MV_OK",
+      "detail": "frame=17301513, 1440x1080",
+      "time": "2026-11-06 19:54:57"
+    },
+    {
+      "step": "FreeImageBuffer",
+      "ok": true,
+      "code": "0x00000000",
+      "name": "MV_OK",
+      "detail": "",
+      "time": "2026-11-06 19:54:57"
+    },
+    {
+      "step": "GetImageBuffer",
+      "ok": true,
+      "code": "0x00000000",
+      "name": "MV_OK",
+      "detail": "frame=17301513, 1440x1080",
+      "time": "2026-11-06 19:54:57"
+    },
+    {
+      "step": "FreeImageBuffer",
+      "ok": true,
+      "code": "0x00000000",
+      "name": "MV_OK",
+      "detail": "",
+      "time": "2026-11-06 19:54:57"
+    },
+    {
+      "step": "GetImageBuffer",
+      "ok": true,
+      "code": "0x00000000",
+      "name": "MV_OK",
+      "detail": "frame=17301513, 1440x1080",
+      "time": "2026-11-06 19:54:57"
+    },
+    {
+      "step": "FreeImageBuffer",
+      "ok": true,
+      "code": "0x00000000",
+      "name": "MV_OK",
+      "detail": "",
+      "time": "2026-11-06 19:54:57"
+    },
+    {
+      "step": "GetImageBuffer",
+      "ok": true,
+      "code": "0x00000000",
+      "name": "MV_OK",
+      "detail": "frame=17301513, 1440x1080",
+      "time": "2026-11-06 19:54:57"
+    },
+    {
+      "step": "FreeImageBuffer",
+      "ok": true,
+      "code": "0x00000000",
+      "name": "MV_OK",
+      "detail": "",
+      "time": "2026-11-06 19:54:57"
+    },
+    {
+      "step": "GetImageBuffer",
+      "ok": true,
+      "code": "0x00000000",
+      "name": "MV_OK",
+      "detail": "frame=17301513, 1440x1080",
+      "time": "2026-11-06 19:54:57"
+    },
+    {
+      "step": "FreeImageBuffer",
+      "ok": true,
+      "code": "0x00000000",
+      "name": "MV_OK",
+      "detail": "",
+      "time": "2026-11-06 19:54:57"
+    },
+    {
+      "step": "GetImageBuffer",
+      "ok": true,
+      "code": "0x00000000",
+      "name": "MV_OK",
+      "detail": "frame=17301513, 1440x1080",
+      "time": "2026-11-06 19:54:57"
+    },
+    {
+      "step": "FreeImageBuffer",
+      "ok": true,
+      "code": "0x00000000",
+      "name": "MV_OK",
+      "detail": "",
+      "time": "2026-11-06 19:54:57"
+    },
+    {
+      "step": "GetImageBuffer",
+      "ok": true,
+      "code": "0x00000000",
+      "name": "MV_OK",
+      "detail": "frame=17301513, 1440x1080",
+      "time": "2026-11-06 19:54:58"
+    },
+    {
+      "step": "FreeImageBuffer",
+      "ok": true,
+      "code": "0x00000000",
+      "name": "MV_OK",
+      "detail": "",
+      "time": "2026-11-06 19:54:58"
+    },
+    {
+      "step": "GetImageBuffer",
+      "ok": true,
+      "code": "0x00000000",
+      "name": "MV_OK",
+      "detail": "frame=17301513, 1440x1080",
+      "time": "2026-11-06 19:54:58"
+    },
+    {
+      "step": "FreeImageBuffer",
+      "ok": true,
+      "code": "0x00000000",
+      "name": "MV_OK",
+      "detail": "",
+      "time": "2026-11-06 19:54:58"
+    },
+    {
+      "step": "GetImageBuffer",
+      "ok": true,
+      "code": "0x00000000",
+      "name": "MV_OK",
+      "detail": "frame=17301513, 1440x1080",
+      "time": "2026-11-06 19:54:58"
+    },
+    {
+      "step": "FreeImageBuffer",
+      "ok": true,
+      "code": "0x00000000",
+      "name": "MV_OK",
+      "detail": "",
+      "time": "2026-11-06 19:54:58"
+    },
+    {
+      "step": "GetImageBuffer",
+      "ok": true,
+      "code": "0x00000000",
+      "name": "MV_OK",
+      "detail": "frame=17301513, 1440x1080",
+      "time": "2026-11-06 19:54:58"
+    },
+    {
+      "step": "FreeImageBuffer",
+      "ok": true,
+      "code": "0x00000000",
+      "name": "MV_OK",
+      "detail": "",
+      "time": "2026-11-06 19:54:58"
+    },
+    {
+      "step": "GetImageBuffer",
+      "ok": true,
+      "code": "0x00000000",
+      "name": "MV_OK",
+      "detail": "frame=17301513, 1440x1080",
+      "time": "2026-11-06 19:54:58"
+    },
+    {
+      "step": "FreeImageBuffer",
+      "ok": true,
+      "code": "0x00000000",
+      "name": "MV_OK",
+      "detail": "",
+      "time": "2026-11-06 19:54:58"
+    },
+    {
+      "step": "StopGrabbing",
+      "ok": true,
+      "code": "0x00000000",
+      "name": "MV_OK",
+      "detail": "",
+      "time": "2026-11-06 19:54:58"
+    },
+    {
+      "step": "CloseDevice",
+      "ok": true,
+      "code": "0x00000000",
+      "name": "MV_OK",
+      "detail": "",
+      "time": "2026-11-06 19:55:01"
+    },
+    {
+      "step": "DestroyHandle",
+      "ok": true,
+      "code": "0x00000000",
+      "name": "MV_OK",
+      "detail": "",
+      "time": "2026-11-06 19:55:01"
+    },
+    {
+      "step": "Finalize",
+      "ok": true,
+      "code": "0x00000000",
+      "name": "MV_OK",
+      "detail": "",
+      "time": "2026-11-06 19:55:01"
+    }
+  ],
+  "warnings": [
+    "SDK 帧元数据异常：enPixelType=0x00000000，nFrameLen=2964732811，与相机回读格式 BayerRG8 的 1555200 字节不符；已改用相机回读格式和宽高计算安全帧长度",
+    "MVS BayerRG8 -> BGR8 转换失败: MVS_ERROR (0x80000500)；已自动改用 OpenCV cv2.cvtColor",
+    "SDK 帧元数据异常：enPixelType=0x00000000，nFrameLen=2964732825，与相机回读格式 BayerRG8 的 1555200 字节不符；已改用相机回读格式和宽高计算安全帧长度",
+    "MVS BayerRG8 -> BGR8 转换失败: MVS_ERROR (0x80000500)；已自动改用 OpenCV cv2.cvtColor",
+    "SDK 帧元数据异常：enPixelType=0x00000000，nFrameLen=2964732839，与相机回读格式 BayerRG8 的 1555200 字节不符；已改用相机回读格式和宽高计算安全帧长度",
+    "MVS BayerRG8 -> BGR8 转换失败: MVS_ERROR (0x80000500)；已自动改用 OpenCV cv2.cvtColor",
+    "SDK 帧元数据异常：enPixelType=0x00000000，nFrameLen=2964732854，与相机回读格式 BayerRG8 的 1555200 字节不符；已改用相机回读格式和宽高计算安全帧长度",
+    "MVS BayerRG8 -> BGR8 转换失败: MVS_ERROR (0x80000500)；已自动改用 OpenCV cv2.cvtColor",
+    "SDK 帧元数据异常：enPixelType=0x00000000，nFrameLen=2964732869，与相机回读格式 BayerRG8 的 1555200 字节不符；已改用相机回读格式和宽高计算安全帧长度",
+    "MVS BayerRG8 -> BGR8 转换失败: MVS_ERROR (0x80000500)；已自动改用 OpenCV cv2.cvtColor",
+    "SDK 帧元数据异常：enPixelType=0x00000000，nFrameLen=2964732884，与相机回读格式 BayerRG8 的 1555200 字节不符；已改用相机回读格式和宽高计算安全帧长度",
+    "MVS BayerRG8 -> BGR8 转换失败: MVS_ERROR (0x80000500)；已自动改用 OpenCV cv2.cvtColor",
+    "SDK 帧元数据异常：enPixelType=0x00000000，nFrameLen=2964732911，与相机回读格式 BayerRG8 的 1555200 字节不符；已改用相机回读格式和宽高计算安全帧长度",
+    "MVS BayerRG8 -> BGR8 转换失败: MVS_ERROR (0x80000500)；已自动改用 OpenCV cv2.cvtColor",
+    "SDK 帧元数据异常：enPixelType=0x00000000，nFrameLen=2964732925，与相机回读格式 BayerRG8 的 1555200 字节不符；已改用相机回读格式和宽高计算安全帧长度",
+    "MVS BayerRG8 -> BGR8 转换失败: MVS_ERROR (0x80000500)；已自动改用 OpenCV cv2.cvtColor",
+    "SDK 帧元数据异常：enPixelType=0x00000000，nFrameLen=2964732968，与相机回读格式 BayerRG8 的 1555200 字节不符；已改用相机回读格式和宽高计算安全帧长度",
+    "MVS BayerRG8 -> BGR8 转换失败: MVS_ERROR (0x80000500)；已自动改用 OpenCV cv2.cvtColor",
+    "SDK 帧元数据异常：enPixelType=0x00000000，nFrameLen=2964732996，与相机回读格式 BayerRG8 的 1555200 字节不符；已改用相机回读格式和宽高计算安全帧长度",
+    "MVS BayerRG8 -> BGR8 转换失败: MVS_ERROR (0x80000500)；已自动改用 OpenCV cv2.cvtColor",
+    "SDK 帧元数据异常：enPixelType=0x00000000，nFrameLen=2964733067，与相机回读格式 BayerRG8 的 1555200 字节不符；已改用相机回读格式和宽高计算安全帧长度",
+    "MVS BayerRG8 -> BGR8 转换失败: MVS_ERROR (0x80000500)；已自动改用 OpenCV cv2.cvtColor",
+    "SDK 帧元数据异常：enPixelType=0x00000000，nFrameLen=2964733095，与相机回读格式 BayerRG8 的 1555200 字节不符；已改用相机回读格式和宽高计算安全帧长度",
+    "MVS BayerRG8 -> BGR8 转换失败: MVS_ERROR (0x80000500)；已自动改用 OpenCV cv2.cvtColor",
+    "SDK 帧元数据异常：enPixelType=0x00000000，nFrameLen=2964733109，与相机回读格式 BayerRG8 的 1555200 字节不符；已改用相机回读格式和宽高计算安全帧长度",
+    "MVS BayerRG8 -> BGR8 转换失败: MVS_ERROR (0x80000500)；已自动改用 OpenCV cv2.cvtColor",
+    "SDK 帧元数据异常：enPixelType=0x00000000，nFrameLen=2964733124，与相机回读格式 BayerRG8 的 1555200 字节不符；已改用相机回读格式和宽高计算安全帧长度",
+    "MVS BayerRG8 -> BGR8 转换失败: MVS_ERROR (0x80000500)；已自动改用 OpenCV cv2.cvtColor",
+    "SDK 帧元数据异常：enPixelType=0x00000000，nFrameLen=2964733152，与相机回读格式 BayerRG8 的 1555200 字节不符；已改用相机回读格式和宽高计算安全帧长度",
+    "MVS BayerRG8 -> BGR8 转换失败: MVS_ERROR (0x80000500)；已自动改用 OpenCV cv2.cvtColor",
+    "SDK 帧元数据异常：enPixelType=0x00000000，nFrameLen=2964733183，与相机回读格式 BayerRG8 的 1555200 字节不符；已改用相机回读格式和宽高计算安全帧长度",
+    "MVS BayerRG8 -> BGR8 转换失败: MVS_ERROR (0x80000500)；已自动改用 OpenCV cv2.cvtColor",
+    "SDK 帧元数据异常：enPixelType=0x00000000，nFrameLen=2964733266，与相机回读格式 BayerRG8 的 1555200 字节不符；已改用相机回读格式和宽高计算安全帧长度",
+    "MVS BayerRG8 -> BGR8 转换失败: MVS_ERROR (0x80000500)；已自动改用 OpenCV cv2.cvtColor",
+    "SDK 帧元数据异常：enPixelType=0x00000000，nFrameLen=2964733309，与相机回读格式 BayerRG8 的 1555200 字节不符；已改用相机回读格式和宽高计算安全帧长度",
+    "MVS BayerRG8 -> BGR8 转换失败: MVS_ERROR (0x80000500)；已自动改用 OpenCV cv2.cvtColor",
+    "SDK 帧元数据异常：enPixelType=0x00000000，nFrameLen=2964733337，与相机回读格式 BayerRG8 的 1555200 字节不符；已改用相机回读格式和宽高计算安全帧长度",
+    "MVS BayerRG8 -> BGR8 转换失败: MVS_ERROR (0x80000500)；已自动改用 OpenCV cv2.cvtColor",
+    "SDK 帧元数据异常：enPixelType=0x00000000，nFrameLen=2964733351，与相机回读格式 BayerRG8 的 1555200 字节不符；已改用相机回读格式和宽高计算安全帧长度",
+    "MVS BayerRG8 -> BGR8 转换失败: MVS_ERROR (0x80000500)；已自动改用 OpenCV cv2.cvtColor",
+    "SDK 帧元数据异常：enPixelType=0x00000000，nFrameLen=2964733493，与相机回读格式 BayerRG8 的 1555200 字节不符；已改用相机回读格式和宽高计算安全帧长度",
+    "MVS BayerRG8 -> BGR8 转换失败: MVS_ERROR (0x80000500)；已自动改用 OpenCV cv2.cvtColor",
+    "SDK 帧元数据异常：enPixelType=0x00000000，nFrameLen=2964733522，与相机回读格式 BayerRG8 的 1555200 字节不符；已改用相机回读格式和宽高计算安全帧长度",
+    "MVS BayerRG8 -> BGR8 转换失败: MVS_ERROR (0x80000500)；已自动改用 OpenCV cv2.cvtColor",
+    "SDK 帧元数据异常：enPixelType=0x00000000，nFrameLen=2964733536，与相机回读格式 BayerRG8 的 1555200 字节不符；已改用相机回读格式和宽高计算安全帧长度",
+    "MVS BayerRG8 -> BGR8 转换失败: MVS_ERROR (0x80000500)；已自动改用 OpenCV cv2.cvtColor",
+    "SDK 帧元数据异常：enPixelType=0x00000000，nFrameLen=2964733550，与相机回读格式 BayerRG8 的 1555200 字节不符；已改用相机回读格式和宽高计算安全帧长度",
+    "MVS BayerRG8 -> BGR8 转换失败: MVS_ERROR (0x80000500)；已自动改用 OpenCV cv2.cvtColor",
+    "SDK 帧元数据异常：enPixelType=0x00000000，nFrameLen=2964733564，与相机回读格式 BayerRG8 的 1555200 字节不符；已改用相机回读格式和宽高计算安全帧长度",
+    "MVS BayerRG8 -> BGR8 转换失败: MVS_ERROR (0x80000500)；已自动改用 OpenCV cv2.cvtColor",
+    "SDK 帧元数据异常：enPixelType=0x00000000，nFrameLen=2964733579，与相机回读格式 BayerRG8 的 1555200 字节不符；已改用相机回读格式和宽高计算安全帧长度",
+    "MVS BayerRG8 -> BGR8 转换失败: MVS_ERROR (0x80000500)；已自动改用 OpenCV cv2.cvtColor",
+    "SDK 帧元数据异常：enPixelType=0x00000000，nFrameLen=2964733608，与相机回读格式 BayerRG8 的 1555200 字节不符；已改用相机回读格式和宽高计算安全帧长度",
+    "MVS BayerRG8 -> BGR8 转换失败: MVS_ERROR (0x80000500)；已自动改用 OpenCV cv2.cvtColor",
+    "SDK 帧元数据异常：enPixelType=0x00000000，nFrameLen=2964733621，与相机回读格式 BayerRG8 的 1555200 字节不符；已改用相机回读格式和宽高计算安全帧长度",
+    "MVS BayerRG8 -> BGR8 转换失败: MVS_ERROR (0x80000500)；已自动改用 OpenCV cv2.cvtColor",
+    "SDK 帧元数据异常：enPixelType=0x00000000，nFrameLen=2964733650，与相机回读格式 BayerRG8 的 1555200 字节不符；已改用相机回读格式和宽高计算安全帧长度",
+    "MVS BayerRG8 -> BGR8 转换失败: MVS_ERROR (0x80000500)；已自动改用 OpenCV cv2.cvtColor",
+    "SDK 帧元数据异常：enPixelType=0x00000000，nFrameLen=2964733678，与相机回读格式 BayerRG8 的 1555200 字节不符；已改用相机回读格式和宽高计算安全帧长度",
+    "MVS BayerRG8 -> BGR8 转换失败: MVS_ERROR (0x80000500)；已自动改用 OpenCV cv2.cvtColor",
+    "SDK 帧元数据异常：enPixelType=0x00000000，nFrameLen=2964733749，与相机回读格式 BayerRG8 的 1555200 字节不符；已改用相机回读格式和宽高计算安全帧长度",
+    "MVS BayerRG8 -> BGR8 转换失败: MVS_ERROR (0x80000500)；已自动改用 OpenCV cv2.cvtColor",
+    "SDK 帧元数据异常：enPixelType=0x00000000，nFrameLen=2964733766，与相机回读格式 BayerRG8 的 1555200 字节不符；已改用相机回读格式和宽高计算安全帧长度",
+    "MVS BayerRG8 -> BGR8 转换失败: MVS_ERROR (0x80000500)；已自动改用 OpenCV cv2.cvtColor",
+    "SDK 帧元数据异常：enPixelType=0x00000000，nFrameLen=2964733778，与相机回读格式 BayerRG8 的 1555200 字节不符；已改用相机回读格式和宽高计算安全帧长度",
+    "MVS BayerRG8 -> BGR8 转换失败: MVS_ERROR (0x80000500)；已自动改用 OpenCV cv2.cvtColor",
+    "SDK 帧元数据异常：enPixelType=0x00000000，nFrameLen=2964733791，与相机回读格式 BayerRG8 的 1555200 字节不符；已改用相机回读格式和宽高计算安全帧长度",
+    "MVS BayerRG8 -> BGR8 转换失败: MVS_ERROR (0x80000500)；已自动改用 OpenCV cv2.cvtColor",
+    "SDK 帧元数据异常：enPixelType=0x00000000，nFrameLen=2964733806，与相机回读格式 BayerRG8 的 1555200 字节不符；已改用相机回读格式和宽高计算安全帧长度",
+    "MVS BayerRG8 -> BGR8 转换失败: MVS_ERROR (0x80000500)；已自动改用 OpenCV cv2.cvtColor",
+    "SDK 帧元数据异常：enPixelType=0x00000000，nFrameLen=2964733820，与相机回读格式 BayerRG8 的 1555200 字节不符；已改用相机回读格式和宽高计算安全帧长度",
+    "MVS BayerRG8 -> BGR8 转换失败: MVS_ERROR (0x80000500)；已自动改用 OpenCV cv2.cvtColor",
+    "SDK 帧元数据异常：enPixelType=0x00000000，nFrameLen=2964733834，与相机回读格式 BayerRG8 的 1555200 字节不符；已改用相机回读格式和宽高计算安全帧长度",
+    "MVS BayerRG8 -> BGR8 转换失败: MVS_ERROR (0x80000500)；已自动改用 OpenCV cv2.cvtColor",
+    "SDK 帧元数据异常：enPixelType=0x00000000，nFrameLen=2964733848，与相机回读格式 BayerRG8 的 1555200 字节不符；已改用相机回读格式和宽高计算安全帧长度",
+    "MVS BayerRG8 -> BGR8 转换失败: MVS_ERROR (0x80000500)；已自动改用 OpenCV cv2.cvtColor",
+    "SDK 帧元数据异常：enPixelType=0x00000000，nFrameLen=2964733862，与相机回读格式 BayerRG8 的 1555200 字节不符；已改用相机回读格式和宽高计算安全帧长度",
+    "MVS BayerRG8 -> BGR8 转换失败: MVS_ERROR (0x80000500)；已自动改用 OpenCV cv2.cvtColor",
+    "SDK 帧元数据异常：enPixelType=0x00000000，nFrameLen=2964733876，与相机回读格式 BayerRG8 的 1555200 字节不符；已改用相机回读格式和宽高计算安全帧长度",
+    "MVS BayerRG8 -> BGR8 转换失败: MVS_ERROR (0x80000500)；已自动改用 OpenCV cv2.cvtColor",
+    "SDK 帧元数据异常：enPixelType=0x00000000，nFrameLen=2964733891，与相机回读格式 BayerRG8 的 1555200 字节不符；已改用相机回读格式和宽高计算安全帧长度",
+    "MVS BayerRG8 -> BGR8 转换失败: MVS_ERROR (0x80000500)；已自动改用 OpenCV cv2.cvtColor",
+    "SDK 帧元数据异常：enPixelType=0x00000000，nFrameLen=2964733907，与相机回读格式 BayerRG8 的 1555200 字节不符；已改用相机回读格式和宽高计算安全帧长度",
+    "MVS BayerRG8 -> BGR8 转换失败: MVS_ERROR (0x80000500)；已自动改用 OpenCV cv2.cvtColor",
+    "SDK 帧元数据异常：enPixelType=0x00000000，nFrameLen=2964733919，与相机回读格式 BayerRG8 的 1555200 字节不符；已改用相机回读格式和宽高计算安全帧长度",
+    "MVS BayerRG8 -> BGR8 转换失败: MVS_ERROR (0x80000500)；已自动改用 OpenCV cv2.cvtColor",
+    "SDK 帧元数据异常：enPixelType=0x00000000，nFrameLen=2964733933，与相机回读格式 BayerRG8 的 1555200 字节不符；已改用相机回读格式和宽高计算安全帧长度",
+    "MVS BayerRG8 -> BGR8 转换失败: MVS_ERROR (0x80000500)；已自动改用 OpenCV cv2.cvtColor",
+    "SDK 帧元数据异常：enPixelType=0x00000000，nFrameLen=2964733948，与相机回读格式 BayerRG8 的 1555200 字节不符；已改用相机回读格式和宽高计算安全帧长度",
+    "MVS BayerRG8 -> BGR8 转换失败: MVS_ERROR (0x80000500)；已自动改用 OpenCV cv2.cvtColor",
+    "SDK 帧元数据异常：enPixelType=0x00000000，nFrameLen=2964734021，与相机回读格式 BayerRG8 的 1555200 字节不符；已改用相机回读格式和宽高计算安全帧长度",
+    "MVS BayerRG8 -> BGR8 转换失败: MVS_ERROR (0x80000500)；已自动改用 OpenCV cv2.cvtColor",
+    "SDK 帧元数据异常：enPixelType=0x00000000，nFrameLen=2964734033，与相机回读格式 BayerRG8 的 1555200 字节不符；已改用相机回读格式和宽高计算安全帧长度",
+    "MVS BayerRG8 -> BGR8 转换失败: MVS_ERROR (0x80000500)；已自动改用 OpenCV cv2.cvtColor",
+    "SDK 帧元数据异常：enPixelType=0x00000000，nFrameLen=2964734047，与相机回读格式 BayerRG8 的 1555200 字节不符；已改用相机回读格式和宽高计算安全帧长度",
+    "MVS BayerRG8 -> BGR8 转换失败: MVS_ERROR (0x80000500)；已自动改用 OpenCV cv2.cvtColor",
+    "SDK 帧元数据异常：enPixelType=0x00000000，nFrameLen=2964734061，与相机回读格式 BayerRG8 的 1555200 字节不符；已改用相机回读格式和宽高计算安全帧长度",
+    "MVS BayerRG8 -> BGR8 转换失败: MVS_ERROR (0x80000500)；已自动改用 OpenCV cv2.cvtColor",
+    "SDK 帧元数据异常：enPixelType=0x00000000，nFrameLen=2964734077，与相机回读格式 BayerRG8 的 1555200 字节不符；已改用相机回读格式和宽高计算安全帧长度",
+    "MVS BayerRG8 -> BGR8 转换失败: MVS_ERROR (0x80000500)；已自动改用 OpenCV cv2.cvtColor",
+    "SDK 帧元数据异常：enPixelType=0x00000000，nFrameLen=2964734091，与相机回读格式 BayerRG8 的 1555200 字节不符；已改用相机回读格式和宽高计算安全帧长度",
+    "MVS BayerRG8 -> BGR8 转换失败: MVS_ERROR (0x80000500)；已自动改用 OpenCV cv2.cvtColor",
+    "SDK 帧元数据异常：enPixelType=0x00000000，nFrameLen=2964734119，与相机回读格式 BayerRG8 的 1555200 字节不符；已改用相机回读格式和宽高计算安全帧长度",
+    "MVS BayerRG8 -> BGR8 转换失败: MVS_ERROR (0x80000500)；已自动改用 OpenCV cv2.cvtColor",
+    "SDK 帧元数据异常：enPixelType=0x00000000，nFrameLen=2964734132，与相机回读格式 BayerRG8 的 1555200 字节不符；已改用相机回读格式和宽高计算安全帧长度",
+    "MVS BayerRG8 -> BGR8 转换失败: MVS_ERROR (0x80000500)；已自动改用 OpenCV cv2.cvtColor",
+    "SDK 帧元数据异常：enPixelType=0x00000000，nFrameLen=2964734161，与相机回读格式 BayerRG8 的 1555200 字节不符；已改用相机回读格式和宽高计算安全帧长度",
+    "MVS BayerRG8 -> BGR8 转换失败: MVS_ERROR (0x80000500)；已自动改用 OpenCV cv2.cvtColor",
+    "SDK 帧元数据异常：enPixelType=0x00000000，nFrameLen=2964734190，与相机回读格式 BayerRG8 的 1555200 字节不符；已改用相机回读格式和宽高计算安全帧长度",
+    "MVS BayerRG8 -> BGR8 转换失败: MVS_ERROR (0x80000500)；已自动改用 OpenCV cv2.cvtColor",
+    "SDK 帧元数据异常：enPixelType=0x00000000，nFrameLen=2964734218，与相机回读格式 BayerRG8 的 1555200 字节不符；已改用相机回读格式和宽高计算安全帧长度",
+    "MVS BayerRG8 -> BGR8 转换失败: MVS_ERROR (0x80000500)；已自动改用 OpenCV cv2.cvtColor",
+    "SDK 帧元数据异常：enPixelType=0x00000000，nFrameLen=2964734232，与相机回读格式 BayerRG8 的 1555200 字节不符；已改用相机回读格式和宽高计算安全帧长度",
+    "MVS BayerRG8 -> BGR8 转换失败: MVS_ERROR (0x80000500)；已自动改用 OpenCV cv2.cvtColor",
+    "SDK 帧元数据异常：enPixelType=0x00000000，nFrameLen=2964734246，与相机回读格式 BayerRG8 的 1555200 字节不符；已改用相机回读格式和宽高计算安全帧长度",
+    "MVS BayerRG8 -> BGR8 转换失败: MVS_ERROR (0x80000500)；已自动改用 OpenCV cv2.cvtColor",
+    "SDK 帧元数据异常：enPixelType=0x00000000，nFrameLen=2964734260，与相机回读格式 BayerRG8 的 1555200 字节不符；已改用相机回读格式和宽高计算安全帧长度",
+    "MVS BayerRG8 -> BGR8 转换失败: MVS_ERROR (0x80000500)；已自动改用 OpenCV cv2.cvtColor",
+    "SDK 帧元数据异常：enPixelType=0x00000000，nFrameLen=2964734274，与相机回读格式 BayerRG8 的 1555200 字节不符；已改用相机回读格式和宽高计算安全帧长度",
+    "MVS BayerRG8 -> BGR8 转换失败: MVS_ERROR (0x80000500)；已自动改用 OpenCV cv2.cvtColor",
+    "SDK 帧元数据异常：enPixelType=0x00000000，nFrameLen=2964734304，与相机回读格式 BayerRG8 的 1555200 字节不符；已改用相机回读格式和宽高计算安全帧长度",
+    "MVS BayerRG8 -> BGR8 转换失败: MVS_ERROR (0x80000500)；已自动改用 OpenCV cv2.cvtColor",
+    "SDK 帧元数据异常：enPixelType=0x00000000，nFrameLen=2964734318，与相机回读格式 BayerRG8 的 1555200 字节不符；已改用相机回读格式和宽高计算安全帧长度",
+    "MVS BayerRG8 -> BGR8 转换失败: MVS_ERROR (0x80000500)；已自动改用 OpenCV cv2.cvtColor",
+    "SDK 帧元数据异常：enPixelType=0x00000000，nFrameLen=2964734333，与相机回读格式 BayerRG8 的 1555200 字节不符；已改用相机回读格式和宽高计算安全帧长度",
+    "MVS BayerRG8 -> BGR8 转换失败: MVS_ERROR (0x80000500)；已自动改用 OpenCV cv2.cvtColor",
+    "SDK 帧元数据异常：enPixelType=0x00000000，nFrameLen=2964734360，与相机回读格式 BayerRG8 的 1555200 字节不符；已改用相机回读格式和宽高计算安全帧长度",
+    "MVS BayerRG8 -> BGR8 转换失败: MVS_ERROR (0x80000500)；已自动改用 OpenCV cv2.cvtColor",
+    "SDK 帧元数据异常：enPixelType=0x00000000，nFrameLen=2964734374，与相机回读格式 BayerRG8 的 1555200 字节不符；已改用相机回读格式和宽高计算安全帧长度",
+    "MVS BayerRG8 -> BGR8 转换失败: MVS_ERROR (0x80000500)；已自动改用 OpenCV cv2.cvtColor",
+    "SDK 帧元数据异常：enPixelType=0x00000000，nFrameLen=2964734445，与相机回读格式 BayerRG8 的 1555200 字节不符；已改用相机回读格式和宽高计算安全帧长度",
+    "MVS BayerRG8 -> BGR8 转换失败: MVS_ERROR (0x80000500)；已自动改用 OpenCV cv2.cvtColor",
+    "SDK 帧元数据异常：enPixelType=0x00000000，nFrameLen=2964734459，与相机回读格式 BayerRG8 的 1555200 字节不符；已改用相机回读格式和宽高计算安全帧长度",
+    "MVS BayerRG8 -> BGR8 转换失败: MVS_ERROR (0x80000500)；已自动改用 OpenCV cv2.cvtColor",
+    "SDK 帧元数据异常：enPixelType=0x00000000，nFrameLen=2964734473，与相机回读格式 BayerRG8 的 1555200 字节不符；已改用相机回读格式和宽高计算安全帧长度",
+    "MVS BayerRG8 -> BGR8 转换失败: MVS_ERROR (0x80000500)；已自动改用 OpenCV cv2.cvtColor",
+    "SDK 帧元数据异常：enPixelType=0x00000000，nFrameLen=2964734487，与相机回读格式 BayerRG8 的 1555200 字节不符；已改用相机回读格式和宽高计算安全帧长度",
+    "MVS BayerRG8 -> BGR8 转换失败: MVS_ERROR (0x80000500)；已自动改用 OpenCV cv2.cvtColor",
+    "SDK 帧元数据异常：enPixelType=0x00000000，nFrameLen=2964734502，与相机回读格式 BayerRG8 的 1555200 字节不符；已改用相机回读格式和宽高计算安全帧长度",
+    "MVS BayerRG8 -> BGR8 转换失败: MVS_ERROR (0x80000500)；已自动改用 OpenCV cv2.cvtColor",
+    "SDK 帧元数据异常：enPixelType=0x00000000，nFrameLen=2964734545，与相机回读格式 BayerRG8 的 1555200 字节不符；已改用相机回读格式和宽高计算安全帧长度",
+    "MVS BayerRG8 -> BGR8 转换失败: MVS_ERROR (0x80000500)；已自动改用 OpenCV cv2.cvtColor",
+    "SDK 帧元数据异常：enPixelType=0x00000000，nFrameLen=2964734559，与相机回读格式 BayerRG8 的 1555200 字节不符；已改用相机回读格式和宽高计算安全帧长度",
+    "MVS BayerRG8 -> BGR8 转换失败: MVS_ERROR (0x80000500)；已自动改用 OpenCV cv2.cvtColor",
+    "SDK 帧元数据异常：enPixelType=0x00000000，nFrameLen=2964734575，与相机回读格式 BayerRG8 的 1555200 字节不符；已改用相机回读格式和宽高计算安全帧长度",
+    "MVS BayerRG8 -> BGR8 转换失败: MVS_ERROR (0x80000500)；已自动改用 OpenCV cv2.cvtColor",
+    "SDK 帧元数据异常：enPixelType=0x00000000，nFrameLen=2964734587，与相机回读格式 BayerRG8 的 1555200 字节不符；已改用相机回读格式和宽高计算安全帧长度",
+    "MVS BayerRG8 -> BGR8 转换失败: MVS_ERROR (0x80000500)；已自动改用 OpenCV cv2.cvtColor",
+    "SDK 帧元数据异常：enPixelType=0x00000000，nFrameLen=2964734604，与相机回读格式 BayerRG8 的 1555200 字节不符；已改用相机回读格式和宽高计算安全帧长度",
+    "MVS BayerRG8 -> BGR8 转换失败: MVS_ERROR (0x80000500)；已自动改用 OpenCV cv2.cvtColor",
+    "SDK 帧元数据异常：enPixelType=0x00000000，nFrameLen=2964734644，与相机回读格式 BayerRG8 的 1555200 字节不符；已改用相机回读格式和宽高计算安全帧长度",
+    "MVS BayerRG8 -> BGR8 转换失败: MVS_ERROR (0x80000500)；已自动改用 OpenCV cv2.cvtColor",
+    "SDK 帧元数据异常：enPixelType=0x00000000，nFrameLen=2964734672，与相机回读格式 BayerRG8 的 1555200 字节不符；已改用相机回读格式和宽高计算安全帧长度",
+    "MVS BayerRG8 -> BGR8 转换失败: MVS_ERROR (0x80000500)；已自动改用 OpenCV cv2.cvtColor",
+    "SDK 帧元数据异常：enPixelType=0x00000000，nFrameLen=2964734686，与相机回读格式 BayerRG8 的 1555200 字节不符；已改用相机回读格式和宽高计算安全帧长度",
+    "MVS BayerRG8 -> BGR8 转换失败: MVS_ERROR (0x80000500)；已自动改用 OpenCV cv2.cvtColor",
+    "SDK 帧元数据异常：enPixelType=0x00000000，nFrameLen=2964734701，与相机回读格式 BayerRG8 的 1555200 字节不符；已改用相机回读格式和宽高计算安全帧长度",
+    "MVS BayerRG8 -> BGR8 转换失败: MVS_ERROR (0x80000500)；已自动改用 OpenCV cv2.cvtColor",
+    "SDK 帧元数据异常：enPixelType=0x00000000，nFrameLen=2964734715，与相机回读格式 BayerRG8 的 1555200 字节不符；已改用相机回读格式和宽高计算安全帧长度",
+    "MVS BayerRG8 -> BGR8 转换失败: MVS_ERROR (0x80000500)；已自动改用 OpenCV cv2.cvtColor",
+    "SDK 帧元数据异常：enPixelType=0x00000000，nFrameLen=2964734729，与相机回读格式 BayerRG8 的 1555200 字节不符；已改用相机回读格式和宽高计算安全帧长度",
+    "MVS BayerRG8 -> BGR8 转换失败: MVS_ERROR (0x80000500)；已自动改用 OpenCV cv2.cvtColor",
+    "SDK 帧元数据异常：enPixelType=0x00000000，nFrameLen=2964734758，与相机回读格式 BayerRG8 的 1555200 字节不符；已改用相机回读格式和宽高计算安全帧长度",
+    "MVS BayerRG8 -> BGR8 转换失败: MVS_ERROR (0x80000500)；已自动改用 OpenCV cv2.cvtColor",
+    "SDK 帧元数据异常：enPixelType=0x00000000，nFrameLen=2964734772，与相机回读格式 BayerRG8 的 1555200 字节不符；已改用相机回读格式和宽高计算安全帧长度",
+    "MVS BayerRG8 -> BGR8 转换失败: MVS_ERROR (0x80000500)；已自动改用 OpenCV cv2.cvtColor",
+    "SDK 帧元数据异常：enPixelType=0x00000000，nFrameLen=2964734801，与相机回读格式 BayerRG8 的 1555200 字节不符；已改用相机回读格式和宽高计算安全帧长度",
+    "MVS BayerRG8 -> BGR8 转换失败: MVS_ERROR (0x80000500)；已自动改用 OpenCV cv2.cvtColor",
+    "SDK 帧元数据异常：enPixelType=0x00000000，nFrameLen=2964734843，与相机回读格式 BayerRG8 的 1555200 字节不符；已改用相机回读格式和宽高计算安全帧长度",
+    "MVS BayerRG8 -> BGR8 转换失败: MVS_ERROR (0x80000500)；已自动改用 OpenCV cv2.cvtColor",
+    "SDK 帧元数据异常：enPixelType=0x00000000，nFrameLen=2964734885，与相机回读格式 BayerRG8 的 1555200 字节不符；已改用相机回读格式和宽高计算安全帧长度",
+    "MVS BayerRG8 -> BGR8 转换失败: MVS_ERROR (0x80000500)；已自动改用 OpenCV cv2.cvtColor",
+    "SDK 帧元数据异常：enPixelType=0x00000000，nFrameLen=2964734901，与相机回读格式 BayerRG8 的 1555200 字节不符；已改用相机回读格式和宽高计算安全帧长度",
+    "MVS BayerRG8 -> BGR8 转换失败: MVS_ERROR (0x80000500)；已自动改用 OpenCV cv2.cvtColor",
+    "SDK 帧元数据异常：enPixelType=0x00000000，nFrameLen=2964734914，与相机回读格式 BayerRG8 的 1555200 字节不符；已改用相机回读格式和宽高计算安全帧长度",
+    "MVS BayerRG8 -> BGR8 转换失败: MVS_ERROR (0x80000500)；已自动改用 OpenCV cv2.cvtColor",
+    "SDK 帧元数据异常：enPixelType=0x00000000，nFrameLen=2964734928，与相机回读格式 BayerRG8 的 1555200 字节不符；已改用相机回读格式和宽高计算安全帧长度",
+    "MVS BayerRG8 -> BGR8 转换失败: MVS_ERROR (0x80000500)；已自动改用 OpenCV cv2.cvtColor",
+    "SDK 帧元数据异常：enPixelType=0x00000000，nFrameLen=2964734956，与相机回读格式 BayerRG8 的 1555200 字节不符；已改用相机回读格式和宽高计算安全帧长度",
+    "MVS BayerRG8 -> BGR8 转换失败: MVS_ERROR (0x80000500)；已自动改用 OpenCV cv2.cvtColor",
+    "SDK 帧元数据异常：enPixelType=0x00000000，nFrameLen=2964734971，与相机回读格式 BayerRG8 的 1555200 字节不符；已改用相机回读格式和宽高计算安全帧长度",
+    "MVS BayerRG8 -> BGR8 转换失败: MVS_ERROR (0x80000500)；已自动改用 OpenCV cv2.cvtColor",
+    "SDK 帧元数据异常：enPixelType=0x00000000，nFrameLen=2964734985，与相机回读格式 BayerRG8 的 1555200 字节不符；已改用相机回读格式和宽高计算安全帧长度",
+    "MVS BayerRG8 -> BGR8 转换失败: MVS_ERROR (0x80000500)；已自动改用 OpenCV cv2.cvtColor",
+    "SDK 帧元数据异常：enPixelType=0x00000000，nFrameLen=2964734999，与相机回读格式 BayerRG8 的 1555200 字节不符；已改用相机回读格式和宽高计算安全帧长度",
+    "MVS BayerRG8 -> BGR8 转换失败: MVS_ERROR (0x80000500)；已自动改用 OpenCV cv2.cvtColor",
+    "SDK 帧元数据异常：enPixelType=0x00000000，nFrameLen=2964735013，与相机回读格式 BayerRG8 的 1555200 字节不符；已改用相机回读格式和宽高计算安全帧长度",
+    "MVS BayerRG8 -> BGR8 转换失败: MVS_ERROR (0x80000500)；已自动改用 OpenCV cv2.cvtColor",
+    "SDK 帧元数据异常：enPixelType=0x00000000，nFrameLen=2964735028，与相机回读格式 BayerRG8 的 1555200 字节不符；已改用相机回读格式和宽高计算安全帧长度",
+    "MVS BayerRG8 -> BGR8 转换失败: MVS_ERROR (0x80000500)；已自动改用 OpenCV cv2.cvtColor",
+    "SDK 帧元数据异常：enPixelType=0x00000000，nFrameLen=2964735056，与相机回读格式 BayerRG8 的 1555200 字节不符；已改用相机回读格式和宽高计算安全帧长度",
+    "MVS BayerRG8 -> BGR8 转换失败: MVS_ERROR (0x80000500)；已自动改用 OpenCV cv2.cvtColor",
+    "SDK 帧元数据异常：enPixelType=0x00000000，nFrameLen=2964735070，与相机回读格式 BayerRG8 的 1555200 字节不符；已改用相机回读格式和宽高计算安全帧长度",
+    "MVS BayerRG8 -> BGR8 转换失败: MVS_ERROR (0x80000500)；已自动改用 OpenCV cv2.cvtColor",
+    "SDK 帧元数据异常：enPixelType=0x00000000，nFrameLen=2964735084，与相机回读格式 BayerRG8 的 1555200 字节不符；已改用相机回读格式和宽高计算安全帧长度",
+    "MVS BayerRG8 -> BGR8 转换失败: MVS_ERROR (0x80000500)；已自动改用 OpenCV cv2.cvtColor",
+    "SDK 帧元数据异常：enPixelType=0x00000000，nFrameLen=2964735099，与相机回读格式 BayerRG8 的 1555200 字节不符；已改用相机回读格式和宽高计算安全帧长度",
+    "MVS BayerRG8 -> BGR8 转换失败: MVS_ERROR (0x80000500)；已自动改用 OpenCV cv2.cvtColor",
+    "SDK 帧元数据异常：enPixelType=0x00000000，nFrameLen=2964735127，与相机回读格式 BayerRG8 的 1555200 字节不符；已改用相机回读格式和宽高计算安全帧长度",
+    "MVS BayerRG8 -> BGR8 转换失败: MVS_ERROR (0x80000500)；已自动改用 OpenCV cv2.cvtColor",
+    "SDK 帧元数据异常：enPixelType=0x00000000，nFrameLen=2964735213，与相机回读格式 BayerRG8 的 1555200 字节不符；已改用相机回读格式和宽高计算安全帧长度",
+    "MVS BayerRG8 -> BGR8 转换失败: MVS_ERROR (0x80000500)；已自动改用 OpenCV cv2.cvtColor",
+    "SDK 帧元数据异常：enPixelType=0x00000000，nFrameLen=2964735227，与相机回读格式 BayerRG8 的 1555200 字节不符；已改用相机回读格式和宽高计算安全帧长度",
+    "MVS BayerRG8 -> BGR8 转换失败: MVS_ERROR (0x80000500)；已自动改用 OpenCV cv2.cvtColor",
+    "SDK 帧元数据异常：enPixelType=0x00000000，nFrameLen=2964735241，与相机回读格式 BayerRG8 的 1555200 字节不符；已改用相机回读格式和宽高计算安全帧长度",
+    "MVS BayerRG8 -> BGR8 转换失败: MVS_ERROR (0x80000500)；已自动改用 OpenCV cv2.cvtColor",
+    "SDK 帧元数据异常：enPixelType=0x00000000，nFrameLen=2964735255，与相机回读格式 BayerRG8 的 1555200 字节不符；已改用相机回读格式和宽高计算安全帧长度",
+    "MVS BayerRG8 -> BGR8 转换失败: MVS_ERROR (0x80000500)；已自动改用 OpenCV cv2.cvtColor",
+    "SDK 帧元数据异常：enPixelType=0x00000000，nFrameLen=2964735269，与相机回读格式 BayerRG8 的 1555200 字节不符；已改用相机回读格式和宽高计算安全帧长度",
+    "MVS BayerRG8 -> BGR8 转换失败: MVS_ERROR (0x80000500)；已自动改用 OpenCV cv2.cvtColor",
+    "SDK 帧元数据异常：enPixelType=0x00000000，nFrameLen=2964735383，与相机回读格式 BayerRG8 的 1555200 字节不符；已改用相机回读格式和宽高计算安全帧长度",
+    "MVS BayerRG8 -> BGR8 转换失败: MVS_ERROR (0x80000500)；已自动改用 OpenCV cv2.cvtColor",
+    "SDK 帧元数据异常：enPixelType=0x00000000，nFrameLen=2964735411，与相机回读格式 BayerRG8 的 1555200 字节不符；已改用相机回读格式和宽高计算安全帧长度",
+    "MVS BayerRG8 -> BGR8 转换失败: MVS_ERROR (0x80000500)；已自动改用 OpenCV cv2.cvtColor",
+    "SDK 帧元数据异常：enPixelType=0x00000000，nFrameLen=2964735425，与相机回读格式 BayerRG8 的 1555200 字节不符；已改用相机回读格式和宽高计算安全帧长度",
+    "MVS BayerRG8 -> BGR8 转换失败: MVS_ERROR (0x80000500)；已自动改用 OpenCV cv2.cvtColor",
+    "SDK 帧元数据异常：enPixelType=0x00000000，nFrameLen=2964735439，与相机回读格式 BayerRG8 的 1555200 字节不符；已改用相机回读格式和宽高计算安全帧长度",
+    "MVS BayerRG8 -> BGR8 转换失败: MVS_ERROR (0x80000500)；已自动改用 OpenCV cv2.cvtColor",
+    "SDK 帧元数据异常：enPixelType=0x00000000，nFrameLen=2964735454，与相机回读格式 BayerRG8 的 1555200 字节不符；已改用相机回读格式和宽高计算安全帧长度",
+    "MVS BayerRG8 -> BGR8 转换失败: MVS_ERROR (0x80000500)；已自动改用 OpenCV cv2.cvtColor",
+    "SDK 帧元数据异常：enPixelType=0x00000000，nFrameLen=2964735596，与相机回读格式 BayerRG8 的 1555200 字节不符；已改用相机回读格式和宽高计算安全帧长度",
+    "MVS BayerRG8 -> BGR8 转换失败: MVS_ERROR (0x80000500)；已自动改用 OpenCV cv2.cvtColor",
+    "SDK 帧元数据异常：enPixelType=0x00000000，nFrameLen=2964735610，与相机回读格式 BayerRG8 的 1555200 字节不符；已改用相机回读格式和宽高计算安全帧长度",
+    "MVS BayerRG8 -> BGR8 转换失败: MVS_ERROR (0x80000500)；已自动改用 OpenCV cv2.cvtColor",
+    "SDK 帧元数据异常：enPixelType=0x00000000，nFrameLen=2964735639，与相机回读格式 BayerRG8 的 1555200 字节不符；已改用相机回读格式和宽高计算安全帧长度",
+    "MVS BayerRG8 -> BGR8 转换失败: MVS_ERROR (0x80000500)；已自动改用 OpenCV cv2.cvtColor",
+    "SDK 帧元数据异常：enPixelType=0x00000000，nFrameLen=2964735667，与相机回读格式 BayerRG8 的 1555200 字节不符；已改用相机回读格式和宽高计算安全帧长度",
+    "MVS BayerRG8 -> BGR8 转换失败: MVS_ERROR (0x80000500)；已自动改用 OpenCV cv2.cvtColor",
+    "SDK 帧元数据异常：enPixelType=0x00000000，nFrameLen=2964735852，与相机回读格式 BayerRG8 的 1555200 字节不符；已改用相机回读格式和宽高计算安全帧长度",
+    "MVS BayerRG8 -> BGR8 转换失败: MVS_ERROR (0x80000500)；已自动改用 OpenCV cv2.cvtColor"
+  ]
+}

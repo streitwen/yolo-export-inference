@@ -1,0 +1,174 @@
+{
+  "time": "2026-11-06 20:14:07",
+  "mode": "bad-format",
+  "expected_fault_observed": true,
+  "expected_error_observed": "收到不支持的图像格式: 0xDEADBEEF（不会把未知字节强行解释成 OpenCV 图像）",
+  "resource_log": [
+    {
+      "step": "CreateHandle",
+      "ok": true,
+      "code": "0x00000000",
+      "name": "MV_OK",
+      "detail": "",
+      "time": "2026-11-06 20:14:06"
+    },
+    {
+      "step": "OpenDevice",
+      "ok": true,
+      "code": "0x00000000",
+      "name": "MV_OK",
+      "detail": "",
+      "time": "2026-11-06 20:14:07"
+    },
+    {
+      "step": "AcquisitionMode",
+      "ok": true,
+      "code": "0x00000000",
+      "name": "MV_OK",
+      "detail": "",
+      "time": "2026-11-06 20:14:07"
+    },
+    {
+      "step": "TriggerMode",
+      "ok": true,
+      "code": "0x00000000",
+      "name": "MV_OK",
+      "detail": "",
+      "time": "2026-11-06 20:14:07"
+    },
+    {
+      "step": "ExposureAuto",
+      "ok": true,
+      "code": "0x00000000",
+      "name": "MV_OK",
+      "detail": "",
+      "time": "2026-11-06 20:14:07"
+    },
+    {
+      "step": "ExposureMode",
+      "ok": true,
+      "code": "0x00000000",
+      "name": "MV_OK",
+      "detail": "",
+      "time": "2026-11-06 20:14:07"
+    },
+    {
+      "step": "GainAuto",
+      "ok": true,
+      "code": "0x00000000",
+      "name": "MV_OK",
+      "detail": "",
+      "time": "2026-11-06 20:14:07"
+    },
+    {
+      "step": "PixelFormat",
+      "ok": true,
+      "code": "0x00000000",
+      "name": "MV_OK",
+      "detail": "BayerRG8",
+      "time": "2026-11-06 20:14:07"
+    },
+    {
+      "step": "ExposureTime",
+      "ok": true,
+      "code": "0x00000000",
+      "name": "MV_OK",
+      "detail": "1000.000 us",
+      "time": "2026-11-06 20:14:07"
+    },
+    {
+      "step": "Gain",
+      "ok": true,
+      "code": "0x00000000",
+      "name": "MV_OK",
+      "detail": "0.000 dB",
+      "time": "2026-11-06 20:14:07"
+    },
+    {
+      "step": "SetGrabStrategy_LatestImagesOnly",
+      "ok": true,
+      "code": "0x00000000",
+      "name": "MV_OK",
+      "detail": "",
+      "time": "2026-11-06 20:14:07"
+    },
+    {
+      "step": "StartGrabbing",
+      "ok": true,
+      "code": "0x00000000",
+      "name": "MV_OK",
+      "detail": "",
+      "time": "2026-11-06 20:14:07"
+    },
+    {
+      "step": "GetImageBuffer",
+      "ok": true,
+      "code": "0x00000000",
+      "name": "MV_OK",
+      "detail": "frame=17301513, 1440x1080",
+      "time": "2026-11-06 20:14:07"
+    },
+    {
+      "step": "FreeImageBuffer",
+      "ok": true,
+      "code": "0x00000000",
+      "name": "MV_OK",
+      "detail": "",
+      "time": "2026-11-06 20:14:07"
+    },
+    {
+      "step": "FreeImageBuffer",
+      "ok": true,
+      "code": "0x00000000",
+      "name": "MV_OK",
+      "detail": "",
+      "time": "2026-11-06 20:14:07"
+    },
+    {
+      "step": "StopGrabbing",
+      "ok": true,
+      "code": "0x00000000",
+      "name": "MV_OK",
+      "detail": "",
+      "time": "2026-11-06 20:14:07"
+    },
+    {
+      "step": "CloseDevice",
+      "ok": true,
+      "code": "0x00000000",
+      "name": "MV_OK",
+      "detail": "",
+      "time": "2026-11-06 20:14:07"
+    },
+    {
+      "step": "DestroyHandle",
+      "ok": true,
+      "code": "0x00000000",
+      "name": "MV_OK",
+      "detail": "",
+      "time": "2026-11-06 20:14:07"
+    },
+    {
+      "step": "Finalize",
+      "ok": true,
+      "code": "0x00000000",
+      "name": "MV_OK",
+      "detail": "",
+      "time": "2026-11-06 20:14:07"
+    }
+  ],
+  "warnings": [
+    "SDK 帧元数据异常：enPixelType=0x00000000，nFrameLen=2965884765，与相机回读格式 BayerRG8 的 1555200 字节不符；已改用相机回读格式和宽高计算安全帧长度",
+    "MVS BayerRG8 -> BGR8 转换失败: MVS_ERROR (0x80000500)；已自动改用 OpenCV cv2.cvtColor"
+  ],
+  "released": {
+    "leased_buffer_clear": true,
+    "grabbing_clear": true,
+    "opened_clear": true,
+    "handle_clear": true
+  },
+  "sdk_finalized": true,
+  "successful_get_image_buffer_calls": 1,
+  "successful_free_image_buffer_calls": 2,
+  "injection": "A real frame was acquired, then enPixelType was forced to 0xDEADBEEF inside the application. This tests error handling and buffer release."
+}

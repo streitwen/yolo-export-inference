@@ -1,0 +1,155 @@
+{
+  "label": "mono_check",
+  "config": {
+    "serial": null,
+    "index": 0,
+    "exposure_us": 100000.0,
+    "gain_db": 6.0,
+    "pixel_format": "Mono8",
+    "roi": null,
+    "frame_rate": null,
+    "timeout_ms": 1000,
+    "settle_frames": 5,
+    "latest_images_only": true
+  },
+  "error": "CameraError: 收到不支持的图像格式: 0x00000000（不会把未知字节强行解释成 OpenCV 图像）",
+  "resource_log": [
+    {
+      "step": "CreateHandle",
+      "ok": true,
+      "code": "0x00000000",
+      "name": "MV_OK",
+      "detail": "",
+      "time": "2026-11-06 19:24:29"
+    },
+    {
+      "step": "OpenDevice",
+      "ok": true,
+      "code": "0x00000000",
+      "name": "MV_OK",
+      "detail": "",
+      "time": "2026-11-06 19:24:29"
+    },
+    {
+      "step": "AcquisitionMode",
+      "ok": true,
+      "code": "0x00000000",
+      "name": "MV_OK",
+      "detail": "",
+      "time": "2026-11-06 19:24:29"
+    },
+    {
+      "step": "TriggerMode",
+      "ok": true,
+      "code": "0x00000000",
+      "name": "MV_OK",
+      "detail": "",
+      "time": "2026-11-06 19:24:29"
+    },
+    {
+      "step": "ExposureAuto",
+      "ok": true,
+      "code": "0x00000000",
+      "name": "MV_OK",
+      "detail": "",
+      "time": "2026-11-06 19:24:29"
+    },
+    {
+      "step": "ExposureMode",
+      "ok": true,
+      "code": "0x00000000",
+      "name": "MV_OK",
+      "detail": "",
+      "time": "2026-11-06 19:24:29"
+    },
+    {
+      "step": "GainAuto",
+      "ok": true,
+      "code": "0x00000000",
+      "name": "MV_OK",
+      "detail": "",
+      "time": "2026-11-06 19:24:29"
+    },
+    {
+      "step": "PixelFormat",
+      "ok": true,
+      "code": "0x00000000",
+      "name": "MV_OK",
+      "detail": "Mono8",
+      "time": "2026-11-06 19:24:29"
+    },
+    {
+      "step": "ExposureTime",
+      "ok": true,
+      "code": "0x00000000",
+      "name": "MV_OK",
+      "detail": "100000.000 us",
+      "time": "2026-11-06 19:24:29"
+    },
+    {
+      "step": "Gain",
+      "ok": true,
+      "code": "0x00000000",
+      "name": "MV_OK",
+      "detail": "5.995 dB",
+      "time": "2026-11-06 19:24:29"
+    },
+    {
+      "step": "SetGrabStrategy_LatestImagesOnly",
+      "ok": true,
+      "code": "0x00000000",
+      "name": "MV_OK",
+      "detail": "",
+      "time": "2026-11-06 19:24:29"
+    },
+    {
+      "step": "StartGrabbing",
+      "ok": true,
+      "code": "0x00000000",
+      "name": "MV_OK",
+      "detail": "",
+      "time": "2026-11-06 19:24:29"
+    },
+    {
+      "step": "FreeImageBuffer",
+      "ok": true,
+      "code": "0x00000000",
+      "name": "MV_OK",
+      "detail": "",
+      "time": "2026-11-06 19:24:29"
+    },
+    {
+      "step": "StopGrabbing",
+      "ok": true,
+      "code": "0x00000000",
+      "name": "MV_OK",
+      "detail": "",
+      "time": "2026-11-06 19:24:29"
+    },
+    {
+      "step": "CloseDevice",
+      "ok": true,
+      "code": "0x00000000",
+      "name": "MV_OK",
+      "detail": "",
+      "time": "2026-11-06 19:24:29"
+    },
+    {
+      "step": "DestroyHandle",
+      "ok": true,
+      "code": "0x00000000",
+      "name": "MV_OK",
+      "detail": "",
+      "time": "2026-11-06 19:24:29"
+    },
+    {
+      "step": "Finalize",
+      "ok": true,
+      "code": "0x00000000",
+      "name": "MV_OK",
+      "detail": "",
+      "time": "2026-11-06 19:24:29"
+    }
+  ],
+  "warnings": []
+}

@@ -1,0 +1,9 @@
+﻿label,pixel_format,exposure_us,gain_db,frames,processed_fps,conversion_ms_mean,process_cpu_percent_mean,mean_gray,saturated_pixel_ratio,dark_noise_std,laplacian_variance
+exposure_500us_still_gain_0db,BayerRG8,500.0,0.0,210,69.467,1.3367,84.1,0.0,0.0,0.006714,0.000167
+exposure_1000us_still_gain_0db,BayerRG8,1000.0,0.0,211,70.231,1.0945,72.35,0.006262,0.0,0.079167,0.030143
+exposure_3000us_still_gain_0db,BayerRG8,3000.0,0.0,175,57.669,3.3537,81.44,0.254257,0.0,0.522,0.737086
+gain_0db_static_exposure_1000us,BayerRG8,1000.0,0.0,134,44.404,5.9372,90.69,0.006692,0.0,0.081308,0.034692
+gain_6db_static_exposure_1000us,BayerRG8,1000.0,6.0,40,11.927,19.1189,42.79,0.067125,0.0,0.2685,0.16725
+gain_12db_static_exposure_1000us,BayerRG8,1000.0,12.0,79,25.845,8.4455,65.57,0.552267,0.0,0.687267,1.4394
+format_bayerrg8_1000us_0db,BayerRG8,1000.0,0.0,110,35.684,4.6901,70.48,0.006091,0.0,0.079818,0.034364
+format_bgr8_1000us_0db,BGR8,1000.0,0.0,180,59.495,0.0,80.51,0.008,0.0,0.091028,0.049333
