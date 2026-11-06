@@ -367,10 +367,31 @@ class MvsCamera:
                 f"width={width}, height={height}, len={frame_len}"
             )
         if pixel_type not in PixelFormat.NAMES:
-            raise CameraError(
-                f"收到不支持的图像格式: {error_hex(pixel_type)}"
-                "（不会把未知字节强行解释成 OpenCV 图像）"
-            )
+            if pixel_type == 0:
+                # Some MVS/library combinations return a valid image buffer but
+                # leave enPixelType as Undefined. Only recover when the recent
+                # camera readback and the frame length both prove the layout.
+                fallback = self.actual_pixel_type
+                fallback_channels = 3 if fallback == PixelFormat.BGR8 else 1
+                fallback_length = width * height * fallback_channels
+                if frame_len == fallback_length:
+                    self._warn(
+                        "SDK 帧的 enPixelType 为 0x00000000，"
+                        f"已按相机回读格式 {self.actual_pixel_format} 和"
+                        f"匹配的帧长度 {frame_len} 恢复"
+                    )
+                    pixel_type = fallback
+                else:
+                    raise CameraError(
+                        "SDK 帧的 enPixelType 为 0x00000000，且帧长度 "
+                        f"{frame_len} 与回读格式 {self.actual_pixel_format} "
+                        f"应有的 {fallback_length} 不等，拒绝猜测图像格式"
+                    )
+            else:
+                raise CameraError(
+                    f"收到不支持的图像格式: {error_hex(pixel_type)}"
+                    "（不会把未知字节强行解释成 OpenCV 图像）"
+                )
 
         channels = 3 if pixel_type == PixelFormat.BGR8 else 1
         expected = width * height * channels

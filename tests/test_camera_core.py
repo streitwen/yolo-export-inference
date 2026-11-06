@@ -123,6 +123,27 @@ class CameraCoreTests(unittest.TestCase):
         self.assertGreaterEqual(result.conversion_ms, 0.0)
         self.assertEqual(fake.free_calls, 1)
 
+    def test_zero_pixel_type_is_recovered_from_matching_camera_format(self):
+        storage = (ctypes.c_ubyte * 4)(1, 2, 3, 4)
+        frame = MvFrameOut()
+        frame.pBufAddr = ctypes.cast(storage, ctypes.c_void_p)
+        frame.stFrameInfo.nWidth = 2
+        frame.stFrameInfo.nHeight = 2
+        frame.stFrameInfo.enPixelType = 0
+        frame.stFrameInfo.nFrameLen = 4
+        fake = FakeSdk(frame)
+        camera = MvsCamera(CameraConfig(pixel_format="BayerRG8"), sdk=fake)
+        camera.handle = ctypes.c_void_p(1)
+        camera.opened = True
+        camera.grabbing = True
+
+        result = camera.grab_frame()
+
+        self.assertEqual(result.actual_pixel_format, "BayerRG8")
+        self.assertEqual(result.image_bgr.shape, (2, 2, 3))
+        self.assertTrue(any("enPixelType" in item for item in camera.warnings))
+        self.assertEqual(fake.free_calls, 1)
+
     def test_image_metrics_and_target_centers(self):
         image = np.zeros((20, 20, 3), dtype=np.uint8)
         image[:, :] = 100

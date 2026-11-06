@@ -391,8 +391,9 @@ MVS 曝光
 python -m unittest discover -s tests -v
 ```
 
-预期 9 项测试全部通过。它检查 SDK 常量与结构体尺寸、未知格式仍归还缓冲区、
-Get/Free 配对、BGR/Bayer 帧复制与转换、FPS、图像指标、中心坐标和命令行参数。
+预期 10 项测试全部通过。它检查 SDK 常量与结构体尺寸、未知格式仍归还缓冲区、
+`enPixelType=0` 的安全恢复、Get/Free 配对、BGR/Bayer 帧复制与转换、FPS、
+图像指标、中心坐标和命令行参数。
 
 ## 11. 常见问题
 
@@ -402,6 +403,7 @@ Get/Free 配对、BGR/Bayer 帧复制与转换、FPS、图像指标、中心坐�
 | `MV_CC_OpenDevice` 失败 | 关闭 MVS 客户端；检查 USB3、供电、udev 权限 |
 | `MV_CC_EnumDevices` 为 0 | `lsusb`、`lsusb -t`，确认不是 USB2 链路 |
 | 找不到曝光或增益节点 | 先设置 `ExposureAuto=Off`、`GainAuto=Off`，并确认不是触发模式 |
+| SDK 帧格式返回 `0x00000000` | 若宽度、高度和帧长度有效，程序会按相机回读格式恢复并写入警告；帧长度不匹配时仍拒绝猜测 |
 | 请求 BGR8 失败 | 相机可能只支持 BayerRG8；保留失败记录，改用 Bayer 流程 |
 | Bayer 图像颜色异常 | 确认返回的是 `BayerRG8`，不要强行当作 BGR；本程序用 SDK 转换 |
 | `--no-display` | SSH 或无桌面环境必须使用，录像仍会正常保存 |
