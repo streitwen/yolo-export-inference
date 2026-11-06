@@ -361,6 +361,7 @@ class MvsCamera:
             info.enPixelType if force_pixel_type is None else force_pixel_type
         )
         frame_len = int(info.nFrameLen)
+        metadata_fallback = False
         if not frame.pBufAddr or width <= 0 or height <= 0 or frame_len <= 0:
             raise CameraError(
                 f"无效帧信息: ptr={bool(frame.pBufAddr)}, "
@@ -382,11 +383,20 @@ class MvsCamera:
                     )
                     pixel_type = fallback
                 else:
-                    raise CameraError(
-                        "SDK 帧的 enPixelType 为 0x00000000，且帧长度 "
-                        f"{frame_len} 与回读格式 {self.actual_pixel_format} "
-                        f"应有的 {fallback_length} 不等，拒绝猜测图像格式"
+                    # Some MVS versions leave several informational fields
+                    # uninitialised even though the image buffer itself is
+                    # valid. Width, height and PixelFormat were read back from
+                    # the device before grabbing, so use those authoritative
+                    # values and copy only the exact compact image length.
+                    self._warn(
+                        "SDK 帧元数据异常：enPixelType=0x00000000，"
+                        f"nFrameLen={frame_len}，与相机回读格式 "
+                        f"{self.actual_pixel_format} 的 {fallback_length} 字节不符；"
+                        "已改用相机回读格式和宽高计算安全帧长度"
                     )
+                    pixel_type = fallback
+                    frame_len = fallback_length
+                    metadata_fallback = True
             else:
                 raise CameraError(
                     f"收到不支持的图像格式: {error_hex(pixel_type)}"
@@ -396,11 +406,25 @@ class MvsCamera:
         channels = 3 if pixel_type == PixelFormat.BGR8 else 1
         expected = width * height * channels
         if frame_len != expected:
-            raise CameraError(
-                f"帧长度与紧凑图像不符: 格式={PixelFormat.NAMES[pixel_type]}, "
-                f"期望 {expected} 字节, 实际 {frame_len}。"
-                "请关闭 ChunkData 或使用单帧探测器核对该相机的行对齐方式。"
-            )
+            reported_len = frame_len
+            if (
+                force_pixel_type is None
+                and pixel_type == self.actual_pixel_type
+                and reported_len > max(expected * 4, 256 * 1024 * 1024)
+            ):
+                self._warn(
+                    "SDK 帧的 nFrameLen 明显异常："
+                    f"{reported_len} 字节；已按相机回读格式 "
+                    f"{self.actual_pixel_format} 和宽高改用 {expected} 字节"
+                )
+                frame_len = expected
+                metadata_fallback = True
+            else:
+                raise CameraError(
+                    f"帧长度与紧凑图像不符: 格式={PixelFormat.NAMES[pixel_type]}, "
+                    f"期望 {expected} 字节, 实际 {frame_len}。"
+                    "请关闭 ChunkData 或使用单帧探测器核对该相机的行对齐方式。"
+                )
         raw_all = np.ctypeslib.as_array(
             ctypes.cast(frame.pBufAddr, ctypes.POINTER(ctypes.c_ubyte)),
             shape=(frame_len,),
@@ -425,21 +449,34 @@ class MvsCamera:
                 pDstBuffer=ctypes.cast(destination, ctypes.c_void_p),
                 nDstBufferSize=expected * 3,
             )
-            self.sdk.check(
-                "MV_CC_ConvertPixelTypeEx",
-                self.sdk.mv_convert_pixel(
-                    self.handle, ctypes.byref(params)
-                ),
-                "BayerRG8 -> BGR8",
-            )
-            conversion_ms = (time.perf_counter() - t0) * 1000.0
-            if int(params.nDstLen) != expected * 3:
-                raise CameraError(
-                    f"像素转换长度异常: 期望 {expected * 3}, 实际 {params.nDstLen}"
+            try:
+                convert_code = int(
+                    self.sdk.mv_convert_pixel(self.handle, ctypes.byref(params))
                 )
-            image_bgr = np.frombuffer(
-                destination.raw, dtype=np.uint8, count=int(params.nDstLen)
-            ).reshape(height, width, 3).copy()
+            except MvsError as exc:
+                convert_code = exc.code
+            conversion_ms = (time.perf_counter() - t0) * 1000.0
+            if convert_code == MV_OK:
+                if int(params.nDstLen) != expected * 3:
+                    raise CameraError(
+                        f"像素转换长度异常: 期望 {expected * 3}, 实际 {params.nDstLen}"
+                    )
+                image_bgr = np.frombuffer(
+                    destination.raw, dtype=np.uint8, count=int(params.nDstLen)
+                ).reshape(height, width, 3).copy()
+            else:
+                # Some MVS releases either do not provide the Ex conversion
+                # structure expected by Python or reject this camera layout.
+                # OpenCV's Bayer conversion is an explicitly supported
+                # fallback and still uses the original BayerRG8 camera data.
+                self._warn(
+                    "MVS BayerRG8 -> BGR8 转换失败: "
+                    f"{error_name(convert_code)} ({error_hex(convert_code)})；"
+                    "已自动改用 OpenCV cv2.cvtColor"
+                )
+                t0 = time.perf_counter()
+                image_bgr = cv2.cvtColor(raw_image, cv2.COLOR_BayerRG2BGR)
+                conversion_ms += (time.perf_counter() - t0) * 1000.0
         else:
             raw_image = raw.reshape(height, width)
             image_bgr = cv2.cvtColor(raw_image, cv2.COLOR_GRAY2BGR)
@@ -456,8 +493,16 @@ class MvsCamera:
             device_timestamp=timestamp,
             host_timestamp=int(info.nHostTimeStamp),
             frame_len=frame_len,
-            exposure_us=float(info.fExposureTime or self.config.exposure_us),
-            gain_db=float(info.fGain or self.config.gain_db),
+            exposure_us=(
+                self.config.exposure_us
+                if metadata_fallback
+                else float(info.fExposureTime or self.config.exposure_us)
+            ),
+            gain_db=(
+                self.config.gain_db
+                if metadata_fallback
+                else float(info.fGain or self.config.gain_db)
+            ),
             conversion_ms=conversion_ms,
         )
 
