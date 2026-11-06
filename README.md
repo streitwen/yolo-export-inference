@@ -4,9 +4,8 @@
 测试曝光、增益、BayerRG8/BGR8 与异常资源释放，再把实时图像送入已有的
 YOLO26n 装甲板四关键点模型，绘制检测框、类别、置信度和四个预测关键点。
 
-> 当前仓库已完成可运行代码、离线测试和实验记录模板。相机型号、序列号、固件、
-> 真实图片、FPS、CPU、异常日志和演示视频必须在接入工业相机的 Ubuntu/MVS 环境
-> 中现场生成。本文没有填写虚构的实验数据。
+> 代码已在安装了海康 MVS 的 Ubuntu 虚拟机和 MV-CA016-10UC 相机上实机运行。
+> 本文数值来自相机输出和程序生成的 JSON/CSV；低曝光漏检结果也按实际情况保留。
 
 ## 1. 已实现功能
 
@@ -15,7 +14,8 @@ YOLO26n 装甲板四关键点模型，绘制检测框、类别、置信度和四
 - 自动记录 MVS SDK 版本、Linux 发行版、Python 与 OpenCV 版本；
 - 连续取流，关闭自动曝光/自动增益，设置并回读曝光、增益、ROI 和像素格式；
 - 支持相机原生 `BayerRG8` 与 `BGR8`；
-- `BayerRG8` 使用 SDK 的 `MV_CC_ConvertPixelTypeEx` 转成 BGR，并记录转换耗时；
+- `BayerRG8` 优先使用 SDK 的 `MV_CC_ConvertPixelTypeEx`；当前环境该接口返回
+  `0x80000500`，程序会保留原始 Bayer 数据并回退到 OpenCV 转换，同时记录耗时和警告；
 - 严格保持一次成功的 `MV_CC_GetImageBuffer` 对应一次 `MV_CC_FreeImageBuffer`；
 - 按逆序释放取流、设备、句柄和 SDK，并保存每一步的错误码与结果；
 - 自动执行 500/1000/3000 μs 曝光、0/6/12 dB 增益和两种像素格式实验；
@@ -36,18 +36,46 @@ YOLO26n 装甲板四关键点模型，绘制检测框、类别、置信度和四
 
 | 项目 | 要求 |
 |---|---|
-| 操作系统 | Ubuntu 22.04 或 MVS 当前版本明确支持的 Ubuntu |
-| 架构 | x86_64；若为 ARM，必须安装对应 `aarch64` MVS 包 |
-| Python | 3.10–3.12，避免使用系统 Python 直接安装依赖 |
-| 相机 | 海康 MV-CS016-10UC（以现场实际设备为准） |
-| 相机 SDK | 海康机器人 MVS Linux SDK |
-| 图像接口 | OpenCV |
-| 推理设备 | CPU 可运行；有 CUDA 时可改用 `.pt` 的 GPU 推理 |
+| 操作系统 | Ubuntu 虚拟机（Python 和 MVS 均运行在虚拟机内） |
+| 架构 | x86_64 |
+| Python | 3.14.4，使用项目内 `.venv` |
+| 相机 | 海康机器人 MV-CA016-10UC，序列号 `00L28498186` |
+| 相机固件 | `V1.6.3 201222 551351` |
+| 相机 SDK | 海康机器人 MVS Linux SDK 4.9.0.3 |
+| MVS 动态库 | `/opt/MVS/lib/64/libMvCameraControl.so` |
+| 图像接口 | OpenCV 5.0.0.93 |
+| 推理后端 | ONNX Runtime 1.31（CPU） |
+| 推理设备 | CPU |
 
-项目默认模型是 `models/best.onnx`，使用 ONNX Runtime CPU 推理。
+项目默认模型是 `models/best.onnx`，使用 ONNX Runtime CPU 推理。Windows 开发机
+没有连接工业相机，因此 Windows 侧只运行离线测试；取流和识别实验在 Ubuntu
+虚拟机内完成。
 
-当前 Windows 开发机没有连接工业相机，因此只完成了离线代码测试。真实实验必须
-在装有 MVS 且能识别 USB3 相机的 Ubuntu 环境中完成。
+### 实机结果摘要
+
+静止场景实测数据如下。饱和像素按灰度 `>= 250` 统计：
+
+| 条件 | 帧数 | FPS | 转换 ms/帧 | 程序 CPU % | 平均灰度 | 饱和比例 | 暗部噪声 |
+|---|---:|---:|---:|---:|---:|---:|---:|
+| 500 μs / 0 dB | 210 | 69.467 | 1.3367 | 84.10 | 0.000000 | 0.000000 | 0.006714 |
+| 1000 μs / 0 dB | 211 | 70.231 | 1.0945 | 72.35 | 0.006262 | 0.000000 | 0.079167 |
+| 3000 μs / 0 dB | 175 | 57.669 | 3.3537 | 81.44 | 0.254257 | 0.000000 | 0.522000 |
+| 1000 μs / 6 dB | 40 | 11.927 | 19.1189 | 42.79 | 0.067125 | 0.000000 | 0.268500 |
+| 1000 μs / 12 dB | 79 | 25.845 | 8.4455 | 65.57 | 0.552267 | 0.000000 | 0.687267 |
+| BayerRG8 / 1000 μs / 0 dB | 110 | 35.684 | 4.6901 | 70.48 | 0.006091 | 0.000000 | 0.079818 |
+| BGR8 / 1000 μs / 0 dB | 180 | 59.495 | 0.0000 | 80.51 | 0.008000 | 0.000000 | 0.091028 |
+
+现场照明明显不足：500–3000 μs 时平均灰度始终低于 `0.6`。提高曝光和增益会
+抬高灰度，但五组固定参数的 YOLO 对比都发生漏检；这是本实验保留的真实异常结果。
+正常识别样例为 `B3`，一处置信度约 `0.18`，移动演示中一处为 `0.40`；四个
+关键点都来自模型输出。移动演示视频为 1440×1080、7 FPS、162 帧，约 23 秒，
+OpenCV 验证可以正常打开。
+
+![静态装甲板 B3 识别结果](docs/images/yolo_static_b3_conf018.png)
+
+![移动装甲板 B3 与四个模型关键点](docs/images/yolo_moving_b3_conf040.png)
+
+![相机实验 CSV 实测数据](docs/images/camera_experiment_summary.png)
 
 ## 3. 准备 MVS 和 Python 环境
 
@@ -337,10 +365,9 @@ results/industrial_camera/
 视频已由 `.gitignore` 排除，应作为作业附件提交。代表性原始图、结果截图、JSON/CSV
 需要提交到 Git，作为真实实验记录。
 
-## 8. 填写实验记录
+## 8. 实验记录
 
-复制 [docs/experiment-record.md](docs/experiment-record.md) 为
-`docs/experiment-record-final.md`，根据现场结果填写。至少记录：
+完整的现场记录在 [docs/experiment-record.md](docs/experiment-record.md)，包含：
 
 - 相机型号、序列号、固件版本；
 - Ubuntu、MVS、OpenCV、Python、ONNX Runtime 版本；
@@ -349,8 +376,6 @@ results/industrial_camera/
 - 每一组的 FPS、CPU、转换时间和图像指标；
 - 至少一组正常识别与一组异常识别；
 - 异常日志和资源释放结果。
-
-验收前不要把模板占位符 `TBD` 留在最终记录中。
 
 ## 9. 代码结构与主要功能
 
@@ -364,7 +389,7 @@ inference.py                   已有 PT/ONNX/TorchScript 通用推理后端
 camera_examples/mat_memory.cpp  Mat 深浅拷贝与 Bayer 转换演示
 camera_examples/mvs_capture.cpp 课堂风格的 C++ 取流示例
 tests/test_camera_core.py      无相机也能运行的离线测试
-docs/experiment-record.md      现场实验记录模板
+docs/experiment-record.md      现场实验数据、失败样例与问题分析
 docs/yolo-export-previous.md   上一份模型导出作业说明
 ```
 
@@ -391,9 +416,9 @@ MVS 曝光
 python -m unittest discover -s tests -v
 ```
 
-预期 10 项测试全部通过。它检查 SDK 常量与结构体尺寸、未知格式仍归还缓冲区、
-`enPixelType=0` 的安全恢复、Get/Free 配对、BGR/Bayer 帧复制与转换、FPS、
-图像指标、中心坐标和命令行参数。
+预期 13 项测试全部通过。它检查 SDK 常量与结构体尺寸、未知格式仍归还缓冲区、
+`enPixelType=0` 和损坏帧长度的安全恢复、Bayer 转换回退、Get/Free 配对、
+BGR/Bayer 帧复制与转换、FPS、图像指标、中心坐标和命令行参数。
 
 ## 11. 常见问题
 
