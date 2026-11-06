@@ -276,6 +276,12 @@ results/industrial_camera/logs/fault_bad-format.json
 `expected_fault_observed` 为 `true` 才表示确实触发了预期异常；若相机未连接、
 触发设置失败或没有出现超时，程序会以非零状态退出，不能把该日志当作成功记录。
 
+仓库还提供一键完成上述检查并打包实验结果的脚本：
+
+```bash
+bash scripts/finalize_camera_tests.sh ~/yolo-export-inference
+```
+
 ## 6. YOLO 实时识别
 
 最小运行命令：
