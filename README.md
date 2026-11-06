@@ -238,6 +238,23 @@ cmake --build build-memory -j2
 ```
 
 它会展示 `cv::Mat` 浅拷贝共享地址、`clone()` 深拷贝，以及 Bayer 转 BGR。
+Ubuntu 首次实验在配置阶段发现虚拟机缺少 `libopencv-dev`，原始失败日志保留在
+`results/industrial_camera/logs/mat_memory_build.txt`。之后使用 OpenCV 4.10.0、
+CMake 4.4.4 和 GNU C++ 16.2.0 在 Windows 侧仅构建 `core/imgproc`，实际运行输出为：
+
+```text
+shared_pointer=1 cloned_pointer=1 step=16 continuous=0
+alias_pixel=[10, 20, 30] owned_pixel=[0, 0, 0]
+BayerRG8_to_BGR_pixel=[20, 100, 200]
+MVS rule: one successful GetImageBuffer <-> one FreeImageBuffer; clone borrowed frame data before freeing.
+```
+
+完整构建日志和运行日志分别见
+`results/industrial_camera/logs/mat_memory_windows_build.txt` 与
+`results/industrial_camera/logs/mat_memory_windows_output.txt`。`step=16` 表示每行
+实际占用 16 字节，而 4 个 BGR 像素本身只需 12 字节，所以该借用图像不是连续内存；
+`shared_pointer=1` 表示普通赋值共享像素地址，`cloned_pointer=1` 和
+`owned_pixel=[0, 0, 0]` 表示 `clone()` 在修改原图前已完成独立复制。
 
 运行两个异常测试：
 

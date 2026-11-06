@@ -1,0 +1,4 @@
+shared_pointer=1 cloned_pointer=1 step=16 continuous=0
+alias_pixel=[10, 20, 30] owned_pixel=[0, 0, 0]
+BayerRG8_to_BGR_pixel=[20, 100, 200]
+MVS rule: one successful GetImageBuffer <-> one FreeImageBuffer; clone borrowed frame data before freeing.

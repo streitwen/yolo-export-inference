@@ -4,7 +4,7 @@ project(mvs_camera_examples LANGUAGES CXX)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-find_package(OpenCV 4 REQUIRED COMPONENTS core imgproc imgcodecs)
+find_package(OpenCV 4 REQUIRED COMPONENTS core imgproc)
 
 add_executable(mat_memory mat_memory.cpp)
 target_include_directories(mat_memory PRIVATE ${OpenCV_INCLUDE_DIRS})
@@ -15,6 +15,7 @@ set(MVS_ROOT "/opt/MVS" CACHE PATH "MVS installation root")
 set(MVS_LIBRARY_DIR "" CACHE PATH "Directory containing libMvCameraControl.so")
 
 if(BUILD_MVS_CAPTURE)
+    find_package(OpenCV 4 REQUIRED COMPONENTS imgcodecs)
     find_path(MVS_INCLUDE_DIR MvCameraControl.h HINTS "${MVS_ROOT}/include")
     find_library(
         MVS_LIBRARY

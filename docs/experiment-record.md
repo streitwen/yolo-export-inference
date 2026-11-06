@@ -193,10 +193,29 @@ cmake --build build-memory -j2
 
 首次运行报 `Could not find a package configuration file provided by OpenCV`，
 说明虚拟机只安装了 Python 版 OpenCV，没有 C++ 开发包。解决方法是安装
-`libopencv-dev`，随后重新运行上面的三条命令。
+`libopencv-dev`，随后重新运行上面的三条命令。失败日志保留在
+`results/industrial_camera/logs/mat_memory_build.txt`。
 
-`cv::Mat alias = view` 是浅拷贝，两个对象共享像素地址和生命周期；`clone()` 会
-分配独立内存，修改原图不会影响副本。MVS 借出的缓冲区在
+为实际验证示例，另在 Windows 侧使用 OpenCV 4.10.0、CMake 4.4.4 和 GNU C++
+16.2.0 构建了只含 `core/imgproc` 的静态版本，并以
+`BUILD_MVS_CAPTURE=OFF` 运行。真实输出：
+
+```text
+shared_pointer=1 cloned_pointer=1 step=16 continuous=0
+alias_pixel=[10, 20, 30] owned_pixel=[0, 0, 0]
+BayerRG8_to_BGR_pixel=[20, 100, 200]
+MVS rule: one successful GetImageBuffer <-> one FreeImageBuffer; clone borrowed frame data before freeing.
+```
+
+构建和运行日志分别位于
+`results/industrial_camera/logs/mat_memory_windows_build.txt` 和
+`results/industrial_camera/logs/mat_memory_windows_output.txt`。
+
+`cv::Mat alias = borrowed` 是浅拷贝，两个对象共享像素地址和生命周期；本次
+`shared_pointer=1` 验证了这一点。`clone()` 会分配独立内存，因此
+`cloned_pointer=1`，且修改原图后 `owned_pixel=[0, 0, 0]` 仍为副本的初值。
+`step=16` 大于 4 像素 × 3 通道的 12 字节，说明该构造刻意保留了行尾间隔，
+`continuous=0` 表示像素内存不连续。MVS 借出的缓冲区在
 `MV_CC_FreeImageBuffer` 后失效，所以必须在那之前完成深拷贝或转换。
 
 ## 10. 遇到的问题与排查
@@ -210,6 +229,10 @@ cmake --build build-memory -j2
 3. 未知格式仍会抛出错误；缓冲区归还放在 `finally`，不会因为格式错误而泄漏。
 4. 现场照明不足导致固定参数 YOLO 对比全部漏检。保留空 CSV 和低亮度首帧，
    不使用其他视频或伪造检测框。
+5. Ubuntu 虚拟机缺少 `libopencv-dev`，首次无法编译 `cv::Mat` 示例。安装命令
+   已写入 README；同时拆分 CMake 依赖：基础示例只要求 `core/imgproc`，
+   只有启用 `BUILD_MVS_CAPTURE` 时才额外要求 `imgcodecs`。最终示例已实际运行，
+   输出见第 9 节。
 
 ## 11. 结论
 

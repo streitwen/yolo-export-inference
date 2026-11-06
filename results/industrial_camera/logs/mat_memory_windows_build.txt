@@ -1,0 +1,30 @@
+Environment:
+  Windows 10.0.26200 AMD64
+  CMake 4.4.4
+  GNU C++ 16.2.0 (w64devkit)
+  OpenCV 4.10.0, minimal static build with core and imgproc
+
+Command:
+  cmake -S camera_examples -B D:\ChatGPT\tools\yolo-camera-example-build-mat ^
+    -G "MinGW Makefiles" -DCMAKE_BUILD_TYPE=Release ^
+    -DBUILD_MVS_CAPTURE=OFF ^
+    -DOpenCV_DIR=D:\ChatGPT\tools\opencv-4.10.0-build-min
+  cmake --build D:\ChatGPT\tools\yolo-camera-example-build-mat --parallel 4
+
+Output:
+  -- The CXX compiler identification is GNU 16.2.0
+  -- Detecting CXX compiler ABI info
+  -- Detecting CXX compiler ABI info - done
+  -- Check for working CXX compiler: D:/ChatGPT/tools/w64devkit/bin/c++.exe - skipped
+  -- Detecting CXX compile features
+  -- Detecting CXX compile features - done
+  -- Found OpenCV: D:/ChatGPT/tools/opencv-4.10.0-build-min
+     (found suitable version "4.10.0", minimum required is "4")
+     found components: core imgproc
+  -- Configuring done (1.5s)
+  -- Generating done (0.0s)
+  -- Build files have been written to:
+     D:/ChatGPT/tools/yolo-camera-example-build-mat
+  [ 50%] Building CXX object CMakeFiles/mat_memory.dir/mat_memory.cpp.obj
+  [100%] Linking CXX executable mat_memory.exe
+  [100%] Built target mat_memory
