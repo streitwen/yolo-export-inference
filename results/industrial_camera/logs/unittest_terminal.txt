@@ -1,0 +1,22 @@
+test_bayer_conversion_falls_back_to_opencv (test_camera_core.CameraCoreTests.test_bayer_conversion_falls_back_to_opencv) ... ok
+test_bayer_conversion_returns_bgr_and_records_time (test_camera_core.CameraCoreTests.test_bayer_conversion_returns_bgr_and_records_time) ... ok
+test_bgr_frame_is_copied_and_returned (test_camera_core.CameraCoreTests.test_bgr_frame_is_copied_and_returned) ... ok
+test_cli_parses_expected_experiment_values (test_camera_core.CameraCoreTests.test_cli_parses_expected_experiment_values) ... ok
+test_experiment_csv_writes_required_columns (test_camera_core.CameraCoreTests.test_experiment_csv_writes_required_columns) ... ok
+test_fault_log_checks_get_and_free_balance (test_camera_core.CameraCoreTests.test_fault_log_checks_get_and_free_balance) ... ok
+test_fps_meter (test_camera_core.CameraCoreTests.test_fps_meter) ... ok
+test_image_metrics_and_target_centers (test_camera_core.CameraCoreTests.test_image_metrics_and_target_centers) ... ok
+test_invalid_mvs_metadata_uses_camera_format_and_exact_length (test_camera_core.CameraCoreTests.test_invalid_mvs_metadata_uses_camera_format_and_exact_length) ... ok
+test_known_pixel_type_with_obviously_invalid_length_is_recovered (test_camera_core.CameraCoreTests.test_known_pixel_type_with_obviously_invalid_length_is_recovered) ... ok
+test_sdk_constants_and_struct_layout (test_camera_core.CameraCoreTests.test_sdk_constants_and_struct_layout) ... ok
+test_unknown_format_still_frees_sdk_buffer (test_camera_core.CameraCoreTests.test_unknown_format_still_frees_sdk_buffer) ... ok
+test_zero_pixel_type_is_recovered_from_matching_camera_format (test_camera_core.CameraCoreTests.test_zero_pixel_type_is_recovered_from_matching_camera_format) ... ok
+
+----------------------------------------------------------------------
+Ran 13 tests in 0.011s
+
+OK
+[警告] MVS BayerRG8 -> BGR8 转换失败: MVS_ERROR (0x80000500)；已自动改用 OpenCV cv2.cvtColor
+[警告] SDK 帧元数据异常：enPixelType=0x00000000，nFrameLen=2963291934，与相机回读格式 BayerRG8 的 4 字节不符；已改用相机回读格式和宽高计算安全帧长度
+[警告] SDK 帧的 nFrameLen 明显异常：2963291934 字节；已按相机回读格式 BayerRG8 和宽高改用 4 字节
+[警告] SDK 帧的 enPixelType 为 0x00000000，已按相机回读格式 BayerRG8 和匹配的帧长度 4 恢复

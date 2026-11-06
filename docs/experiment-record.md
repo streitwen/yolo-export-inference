@@ -9,20 +9,18 @@
 |---|---|
 | 相机型号 | 海康机器人 MV-CA016-10UC |
 | 相机序列号 | `00L28498186` |
-| 固件版本 | `V1.6.3 201222 551351` |
-| Ubuntu 版本 | Ubuntu 虚拟机；完整发行版字符串见实验 JSON |
-| CPU / 内存 | 虚拟机实际配置；完整信息见系统环境记录 |
+| 固件版本 | 枚举值 `V1.6.3 201222 551351`；节点值 `V1.6.3 201222,20091101` |
+| Ubuntu 版本 | Ubuntu 26.04.1 LTS，内核 7.0.0-42-generic，x86_64 |
+| CPU / 内存 | VMware 虚拟机；程序采用 CPU 推理 |
 | Python | 3.14.4（项目 `.venv`） |
 | MVS 版本 | 4.9.0.3 |
 | MVS 动态库路径 | `/opt/MVS/lib/64/libMvCameraControl.so` |
-| OpenCV | 5.0.0.93 |
-| ONNX Runtime / PyTorch | ONNX Runtime 1.31；本次实时推理使用 CPU |
+| OpenCV | 5.0.0 |
+| ONNX Runtime / PyTorch | ONNX Runtime 1.31.1；本次实时推理使用 CPU |
 | 镜头型号 / 焦距 | 现场相机原配镜头，未单独记录型号 |
 | 工作距离 | 约 0.3–1.0 m，随演示中的移动而变化 |
 | 光源 | D414 实验室室内照明，未使用专业补光灯 |
 | 光圈 / 对焦 | 保持现场设置，实验过程中未单独记录数值 |
-
-![MVS 相机枚举结果](images/mvs_camera_identity.png)
 
 ## 2. 相机公共参数
 
@@ -60,7 +58,7 @@ YOLO 识别，因此低曝光漏检是实际结果，没有删除或替换。
 
 `yolo_impact` 的固定参数测试使用了移动中的装甲板，并保存了每组 MP4 和首帧。
 五组均未产生有效检测，无法用检测框直接评价运动清晰度；肉眼仍能看到低照度、
-运动模糊和噪声问题。
+运动模糊和噪声问题。各组实际采集帧数为 55、54、57、60、61。
 
 | 条件 | 代表首帧 | 识别结果 |
 |---|---|---|
@@ -108,11 +106,15 @@ BayerRG8 每帧原始传输量约为 `1440×1080×1 = 1,555,200` 字节；转换
 |---|---|
 | 模型文件 | `models/best.onnx` |
 | 模型格式 | ONNX |
-| 推理后端 | ONNX Runtime 1.31，CPU |
+| 推理后端 | ONNX Runtime 1.31.1，CPU |
 | conf / iou / imgsz | 0.25 / 0.7 / 640 |
 | 相机分辨率 | 1440×1080 |
-| 最终演示视频 | 162 帧、7 FPS、约 23 秒 |
-| 窗口处理延迟示例 | 约 46 ms/帧 |
+| 最终配置 | 曝光 150000 μs、增益 12 dB、BayerRG8 |
+| 最终演示视频 | 162 帧；处理帧率 6.442 FPS；封装为 7 FPS、约 23 秒 |
+| 检测统计 | 90/162 帧含目标（55.56%），共 92 个目标 |
+| 类别统计 | B3 90 个、R3 2 个 |
+| 平均置信度 | 0.516156 |
+| 平均处理延迟 | 39.009 ms/帧；P95 46.588 ms |
 | 结果视频 | `results/industrial_camera/yolo/yolo_live_display.mp4` |
 | 结果 CSV | `results/industrial_camera/yolo/yolo_live_display_detections.csv` |
 | 结果报告 | `results/industrial_camera/yolo/yolo_live_display_report.json` |
@@ -121,12 +123,12 @@ BayerRG8 每帧原始传输量约为 `1440×1080×1 = 1,555,200` 字节；转换
 
 | 场景 | 类别 | 置信度 | 关键点 | 结果图 |
 |---|---|---:|---|---|
-| 较亮静止画面 | B3 | 0.18 | 模型输出的四个点可见，基本落在装甲板角部附近 | `yolo_bright_first_detection.jpg` |
-| 移动演示 | B3 | 0.40 | 四个模型关键点完整显示；目标有运动模糊 | `yolo_live_display_first_detection.jpg` |
+| 较亮静止画面 | B3 | 0.184（本次平均） | 模型输出的四个点可见，基本落在装甲板角部附近 | `results/industrial_camera/yolo/yolo_bright_first_detection.jpg` |
+| 移动演示 | B3 | 0.400（首次检测帧） | 四个模型关键点完整显示；目标有运动模糊 | `results/industrial_camera/yolo/yolo_live_display_first_detection.jpg` |
 
-![静态画面中的 B3 与四个模型关键点](images/yolo_static_b3_conf018.png)
+![静态画面中的 B3 与四个模型关键点](../results/industrial_camera/yolo/yolo_bright_first_detection.jpg)
 
-![移动画面中的 B3 与四个模型关键点](images/yolo_moving_b3_conf040.png)
+![移动画面中的 B3 与四个模型关键点](../results/industrial_camera/yolo/yolo_live_display_first_detection.jpg)
 
 识别异常样例：
 
@@ -141,11 +143,11 @@ BayerRG8 每帧原始传输量约为 `1440×1080×1 = 1,555,200` 字节；转换
 
 | 曝光/增益 | 检测目标数 | 含检测帧比例 | 主要问题 |
 |---|---:|---:|---|
-| 500 μs / 0 dB | 0 | 0% | 极暗，漏检 |
-| 1000 μs / 0 dB | 0 | 0% | 极暗，漏检 |
-| 3000 μs / 0 dB | 0 | 0% | 仍偏暗，漏检 |
-| 1000 μs / 6 dB | 0 | 0% | 放大噪声后仍漏检 |
-| 1000 μs / 12 dB | 0 | 0% | 变亮但噪声明显，仍漏检 |
+| 500 μs / 0 dB | 0（55 帧） | 0% | 极暗，漏检 |
+| 1000 μs / 0 dB | 0（54 帧） | 0% | 极暗，漏检 |
+| 3000 μs / 0 dB | 0（57 帧） | 0% | 仍偏暗，漏检 |
+| 1000 μs / 6 dB | 0（60 帧） | 0% | 放大噪声后仍漏检 |
+| 1000 μs / 12 dB | 0（61 帧） | 0% | 变亮但噪声明显，仍漏检 |
 
 这五组结果说明：仅靠提高增益不能稳定解决暗光识别；应优先改善照明，再选择
 能够冻结运动、又不过曝的曝光时间。另有一组在更亮条件下成功识别 B3，说明模型、
@@ -157,14 +159,27 @@ BayerRG8 每帧原始传输量约为 `1440×1080×1 = 1,555,200` 字节；转换
 
 - 日志：`results/industrial_camera/logs/fault_timeout.json`
 - 测试方法：软件触发模式启动取流但不发送触发，让 `MV_CC_GetImageBuffer` 超时。
-- 最终状态：在装有当前相机的虚拟机中补跑后填写结果 JSON。
+- 是否确认触发预期异常：`true`
+- 观察到的错误码：`0x80000007`（`MV_E_NODATA`）
+- 是否停止取流：是
+- 是否关闭设备、销毁句柄并 Finalize：是
+- `released` 四项：全部为 `true`
+- 成功 Get/Free 次数：0 / 0（超时帧没有取得缓冲区）
 
 ### 8.2 不支持的图像格式
 
 - 日志：`results/industrial_camera/logs/fault_bad-format.json`
 - 注入类型：`0xDEADBEEF`
 - 测试方法：先取得真实帧，再在应用层强制注入未知格式。
-- 最终状态：在装有当前相机的虚拟机中补跑后填写结果 JSON。
+- 是否确认触发预期异常：`true`
+- 是否拒绝把未知字节解释成图像：是
+- 是否仍调用 `MV_CC_FreeImageBuffer`：是
+- `released` 四项：全部为 `true`
+- SDK Finalize：`true`
+- 日志说明：测试先在预热阶段成功取到一帧，再取得注入格式的帧。旧版日志只把
+  处理成功的取帧标记为成功，因此显示 1 次已记录 Get、2 次 Free；两次 Free
+  分别归还预热帧和注入帧，并非同一缓冲区被释放。代码已把 Get 记录移到 SDK
+  成功取帧之后并增加配对测试，后续运行会记录为 2 次 Get、2 次 Free。
 
 ## 9. Mat 内存观察
 
@@ -175,6 +190,10 @@ cmake -S camera_examples -B build-memory -DBUILD_MVS_CAPTURE=OFF
 cmake --build build-memory -j2
 ./build-memory/mat_memory
 ```
+
+首次运行报 `Could not find a package configuration file provided by OpenCV`，
+说明虚拟机只安装了 Python 版 OpenCV，没有 C++ 开发包。解决方法是安装
+`libopencv-dev`，随后重新运行上面的三条命令。
 
 `cv::Mat alias = view` 是浅拷贝，两个对象共享像素地址和生命周期；`clone()` 会
 分配独立内存，修改原图不会影响副本。MVS 借出的缓冲区在
@@ -195,6 +214,7 @@ cmake --build build-memory -j2
 ## 11. 结论
 
 在现有照明条件下，BayerRG8/BGR8 取流、YOLO 推理和可视化链路均已跑通；成功
-样例能够输出 B3、置信度和四个模型预测关键点。当前主要限制是曝光与补光不足，
-导致大部分固定参数对比漏检。若重新实验，会优先增加稳定补光，固定运动速度和
-距离，并分别拍摄三档曝光下的运动序列，以更准确比较拖影与识别率。
+样例能够输出 B3、R3、置信度和四个模型预测关键点。本次有效演示参数为
+150000 μs、12 dB，处理帧率约 6.44 FPS。500–3000 μs 的五组对比全部漏检，
+说明主要限制仍是曝光与补光不足。若重新实验，会优先增加稳定补光，固定运动
+速度和距离，并分别拍摄三档曝光下的运动序列，以更准确比较拖影与识别率。

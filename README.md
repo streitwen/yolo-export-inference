@@ -36,15 +36,15 @@ YOLO26n 装甲板四关键点模型，绘制检测框、类别、置信度和四
 
 | 项目 | 要求 |
 |---|---|
-| 操作系统 | Ubuntu 虚拟机（Python 和 MVS 均运行在虚拟机内） |
+| 操作系统 | Ubuntu 26.04.1 LTS 虚拟机 |
 | 架构 | x86_64 |
 | Python | 3.14.4，使用项目内 `.venv` |
 | 相机 | 海康机器人 MV-CA016-10UC，序列号 `00L28498186` |
-| 相机固件 | `V1.6.3 201222 551351` |
+| 相机固件 | 枚举值 `V1.6.3 201222 551351`；节点值 `V1.6.3 201222,20091101` |
 | 相机 SDK | 海康机器人 MVS Linux SDK 4.9.0.3 |
 | MVS 动态库 | `/opt/MVS/lib/64/libMvCameraControl.so` |
-| 图像接口 | OpenCV 5.0.0.93 |
-| 推理后端 | ONNX Runtime 1.31（CPU） |
+| 图像接口 | OpenCV 5.0.0 |
+| 推理后端 | ONNX Runtime 1.31.1（CPU） |
 | 推理设备 | CPU |
 
 项目默认模型是 `models/best.onnx`，使用 ONNX Runtime CPU 推理。Windows 开发机
@@ -67,15 +67,16 @@ YOLO26n 装甲板四关键点模型，绘制检测框、类别、置信度和四
 
 现场照明明显不足：500–3000 μs 时平均灰度始终低于 `0.6`。提高曝光和增益会
 抬高灰度，但五组固定参数的 YOLO 对比都发生漏检；这是本实验保留的真实异常结果。
-正常识别样例为 `B3`，一处置信度约 `0.18`，移动演示中一处为 `0.40`；四个
-关键点都来自模型输出。移动演示视频为 1440×1080、7 FPS、162 帧，约 23 秒，
+随后把曝光调整为 150000 μs、增益调整为 12 dB，成功完成实时识别：演示共 162
+帧，其中 90 帧含检测结果，共输出 92 个目标（B3 90 个、R3 2 个），平均置信度
+`0.516`，平均处理延迟 `39.009 ms`。视频为 1440×1080、7 FPS，约 23 秒，
 OpenCV 验证可以正常打开。
 
-![静态装甲板 B3 识别结果](docs/images/yolo_static_b3_conf018.png)
+![静态装甲板 B3 识别结果](results/industrial_camera/yolo/yolo_bright_first_detection.jpg)
 
-![移动装甲板 B3 与四个模型关键点](docs/images/yolo_moving_b3_conf040.png)
+![移动装甲板 B3 与四个模型关键点](results/industrial_camera/yolo/yolo_live_display_first_detection.jpg)
 
-![相机实验 CSV 实测数据](docs/images/camera_experiment_summary.png)
+![500 μs 低照度漏检结果](results/industrial_camera/yolo_impact/exposure_500us_gain_0db_first_frame.jpg)
 
 ## 3. 准备 MVS 和 Python 环境
 
@@ -110,10 +111,11 @@ python -m pip install --upgrade pip
 pip install -r requirements.txt
 ```
 
-如果 OpenCV 需要看桌面窗口，系统还要安装：
+如果 OpenCV 需要看桌面窗口，或要编译 `cv::Mat` C++ 示例，系统还要安装：
 
 ```bash
-sudo apt install -y libgl1
+sudo apt update
+sudo apt install -y libgl1 libopencv-dev
 ```
 
 ### 3.3 准备模型
@@ -291,9 +293,10 @@ python camera_cli.py yolo \
   --serial YOUR_SERIAL \
   --model models/best.onnx \
   --pixel-format BayerRG8 \
-  --exposure-us 1000 \
-  --gain-db 0 \
-  --duration 20
+  --exposure-us 150000 \
+  --gain-db 12 \
+  --duration 25 \
+  --name yolo_live_display
 ```
 
 窗口中可看到：
@@ -422,7 +425,7 @@ MVS 曝光
 python -m unittest discover -s tests -v
 ```
 
-预期 13 项测试全部通过。它检查 SDK 常量与结构体尺寸、未知格式仍归还缓冲区、
+预期 14 项测试全部通过。它检查 SDK 常量与结构体尺寸、未知格式仍归还缓冲区、
 `enPixelType=0` 和损坏帧长度的安全恢复、Bayer 转换回退、Get/Free 配对、
 BGR/Bayer 帧复制与转换、FPS、图像指标、中心坐标和命令行参数。
 
@@ -434,9 +437,9 @@ BGR/Bayer 帧复制与转换、FPS、图像指标、中心坐标和命令行参�
 | `MV_CC_OpenDevice` 失败 | 关闭 MVS 客户端；检查 USB3、供电、udev 权限 |
 | `MV_CC_EnumDevices` 为 0 | `lsusb`、`lsusb -t`，确认不是 USB2 链路 |
 | 找不到曝光或增益节点 | 先设置 `ExposureAuto=Off`、`GainAuto=Off`，并确认不是触发模式 |
-| SDK 帧格式返回 `0x00000000` | 若宽度、高度和帧长度有效，程序会按相机回读格式恢复并写入警告；帧长度不匹配时仍拒绝猜测 |
+| SDK 帧格式返回 `0x00000000` | 若宽度、高度有效，程序按打开时回读的 PixelFormat 和 ROI 计算安全帧长度，并把异常写入警告 |
 | 请求 BGR8 失败 | 相机可能只支持 BayerRG8；保留失败记录，改用 Bayer 流程 |
-| Bayer 图像颜色异常 | 确认返回的是 `BayerRG8`，不要强行当作 BGR；本程序用 SDK 转换 |
+| Bayer 图像颜色异常 | 确认返回的是 `BayerRG8`，不要强行当作 BGR；本程序优先用 SDK 转换，失败时明确回退 OpenCV |
 | `--no-display` | SSH 或无桌面环境必须使用，录像仍会正常保存 |
 | 检测框延迟越来越大 | 使用最新帧策略；降低相机目标帧率或缩小 ROI，避免队列堆积 |
 | 视频无法播放 | 用 OpenCV `mp4v` 生成；必要时安装 FFmpeg 转 H.264 后再提交 |

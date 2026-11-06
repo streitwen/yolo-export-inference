@@ -98,9 +98,17 @@ class CameraCoreTests(unittest.TestCase):
 
         self.assertEqual(fake.free_calls, 1)
         self.assertIsNone(camera.leased)
-        self.assertTrue(
-            any(item["step"] == "FreeImageBuffer" for item in camera.resource_log)
-        )
+        steps = [item["step"] for item in camera.resource_log]
+        self.assertEqual(steps.count("GetImageBuffer"), 1)
+        self.assertEqual(steps.count("FreeImageBuffer"), 1)
+
+    def test_repeated_warning_is_recorded_once(self):
+        camera = MvsCamera(CameraConfig(pixel_format="BayerRG8"), sdk=FakeSdk(None))
+
+        camera._warn("same warning")
+        camera._warn("same warning")
+
+        self.assertEqual(camera.warnings, ["same warning"])
 
     def test_bayer_conversion_returns_bgr_and_records_time(self):
         storage = (ctypes.c_ubyte * 4)(1, 2, 3, 4)

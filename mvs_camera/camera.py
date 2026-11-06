@@ -119,8 +119,9 @@ class MvsCamera:
         )
 
     def _warn(self, message: str) -> None:
-        self.warnings.append(message)
-        print(f"[警告] {message}")
+        if message not in self.warnings:
+            self.warnings.append(message)
+            print(f"[警告] {message}")
 
     def _safe_string(self, key: str, fallback: str = "") -> str:
         try:
@@ -336,14 +337,14 @@ class MvsCamera:
             return None
         self.sdk.check("MV_CC_GetImageBuffer", code)
         self.leased = frame
+        info = frame.stFrameInfo
+        self._record(
+            "GetImageBuffer",
+            MV_OK,
+            detail=f"frame={int(info.nFrameNum)}, {int(info.nWidth)}x{int(info.nHeight)}",
+        )
         try:
-            result = self._process_leased_frame(frame, force_pixel_type)
-            self._record(
-                "GetImageBuffer",
-                MV_OK,
-                detail=f"frame={result.frame_number}, {result.width}x{result.height}",
-            )
-            return result
+            return self._process_leased_frame(frame, force_pixel_type)
         finally:
             # This is deliberately in ``finally``: conversion or format errors
             # must never leak the SDK buffer lease.
