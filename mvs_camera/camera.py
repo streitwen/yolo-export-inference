@@ -57,6 +57,7 @@ class FrameData:
     exposure_us: float
     gain_db: float
     conversion_ms: float
+    conversion: str
     received_at: float = field(default_factory=time.perf_counter)
 
     def metadata(self) -> dict[str, Any]:
@@ -72,6 +73,7 @@ class FrameData:
             "exposure_us": self.exposure_us,
             "gain_db": self.gain_db,
             "conversion_ms": self.conversion_ms,
+            "conversion": self.conversion,
         }
 
 
@@ -436,6 +438,7 @@ class MvsCamera:
         if pixel_type == PixelFormat.BGR8:
             raw_image = raw.reshape(height, width, 3)
             image_bgr = raw_image.copy()
+            conversion = "none (camera outputs BGR8)"
         elif pixel_type == PixelFormat.BayerRG8:
             raw_image = raw.reshape(height, width)
             t0 = time.perf_counter()
@@ -465,6 +468,7 @@ class MvsCamera:
                 image_bgr = np.frombuffer(
                     destination.raw, dtype=np.uint8, count=int(params.nDstLen)
                 ).reshape(height, width, 3).copy()
+                conversion = "MV_CC_ConvertPixelTypeEx (BayerRG8 -> BGR8)"
             else:
                 # Some MVS releases either do not provide the Ex conversion
                 # structure expected by Python or reject this camera layout.
@@ -476,11 +480,16 @@ class MvsCamera:
                     "已自动改用 OpenCV cv2.cvtColor"
                 )
                 t0 = time.perf_counter()
-                image_bgr = cv2.cvtColor(raw_image, cv2.COLOR_BayerRG2BGR)
+                # BayerRG8 stores one 2x2 block as R, G, G, B. OpenCV's
+                # two-letter aliases are easy to misread: BayerBG2BGR is
+                # also BayerRGGB2BGR, whereas BayerRG2BGR decodes BGGR.
+                image_bgr = cv2.cvtColor(raw_image, cv2.COLOR_BayerRGGB2BGR)
                 conversion_ms += (time.perf_counter() - t0) * 1000.0
+                conversion = "OpenCV COLOR_BayerRGGB2BGR (BayerRG8 -> BGR8)"
         else:
             raw_image = raw.reshape(height, width)
             image_bgr = cv2.cvtColor(raw_image, cv2.COLOR_GRAY2BGR)
+            conversion = "OpenCV COLOR_GRAY2BGR"
 
         timestamp = (int(info.nDevTimeStampHigh) << 32) | int(info.nDevTimeStampLow)
         return FrameData(
@@ -505,6 +514,7 @@ class MvsCamera:
                 else float(info.fGain or self.config.gain_db)
             ),
             conversion_ms=conversion_ms,
+            conversion=conversion,
         )
 
     def _require_opened(self) -> None:

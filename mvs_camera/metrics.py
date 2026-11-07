@@ -132,13 +132,22 @@ class RuntimeStats:
     fps_samples: list[float] = field(default_factory=list)
     conversion_ms: list[float] = field(default_factory=list)
     cpu_samples: list[dict[str, Any]] = field(default_factory=list)
+    conversion: str = "unknown"
 
-    def add(self, *, fps: float, conversion_ms: float, cpu: dict[str, Any]) -> None:
+    def add(
+        self,
+        *,
+        fps: float,
+        conversion_ms: float,
+        cpu: dict[str, Any],
+        conversion: str = "unknown",
+    ) -> None:
         self.frame_count += 1
         if fps > 0:
             self.fps_samples.append(float(fps))
         self.conversion_ms.append(float(conversion_ms))
         self.cpu_samples.append(cpu)
+        self.conversion = conversion
 
     def summary(self, actual_pixel_format: str, requested_pixel_format: str) -> dict[str, Any]:
         elapsed = max(time.perf_counter() - self.started_at, 1e-9)
@@ -176,9 +185,5 @@ class RuntimeStats:
             else None,
             "requested_pixel_format": requested_pixel_format,
             "actual_camera_pixel_format": actual_pixel_format,
-            "conversion": (
-                "MV_CC_ConvertPixelTypeEx (BayerRG8 -> BGR8)"
-                if actual_pixel_format == "BayerRG8"
-                else "none (camera outputs BGR8)"
-            ),
+            "conversion": self.conversion,
         }

@@ -124,11 +124,16 @@ BayerRG8 每帧原始传输量约为 `1440×1080×1 = 1,555,200` 字节；转换
 | 场景 | 类别 | 置信度 | 关键点 | 结果图 |
 |---|---|---:|---|---|
 | 较亮静止画面 | B3 | 0.184（本次平均） | 模型输出的四个点可见，基本落在装甲板角部附近 | `results/industrial_camera/yolo/yolo_bright_first_detection.jpg` |
-| 移动演示 | B3 | 0.400（首次检测帧） | 四个模型关键点完整显示；目标有运动模糊 | `results/industrial_camera/yolo/yolo_live_display_first_detection.jpg` |
+| 移动演示 | B3 | 0.862（颜色纠正后的展示帧） | 四个模型关键点完整显示；目标有运动模糊 | `results/industrial_camera/yolo/yolo_live_display_first_detection_corrected.jpg` |
 
 ![静态画面中的 B3 与四个模型关键点](../results/industrial_camera/yolo/yolo_bright_first_detection.jpg)
 
-![移动画面中的 B3 与四个模型关键点](../results/industrial_camera/yolo/yolo_live_display_first_detection.jpg)
+![移动画面中的 B3 与四个模型关键点](../results/industrial_camera/yolo/yolo_live_display_first_detection_corrected.jpg)
+
+该图来自同一次实测的模型输出。第一次运行误用了 `COLOR_BayerRG2BGR`，导致红色和
+蓝色通道对调；展示图按正确 `COLOR_BayerRGGB2BGR` 排列做确定性纠正，并用 CSV
+记录的原始预测框和关键点重新绘制。原始偏色图仍保留为
+`yolo_live_display_first_detection.jpg`，没有覆盖或伪造实验记录。
 
 识别异常样例：
 
@@ -224,8 +229,9 @@ MVS rule: one successful GetImageBuffer <-> one FreeImageBuffer; clone borrowed 
    `2,963,291,934` 的损坏值。程序改为使用打开相机时回读的 PixelFormat 与 ROI
    计算安全帧长度，并严格只复制实际像素所需的紧凑长度。
 2. `MV_CC_ConvertPixelTypeEx` 返回 `0x80000500`。程序保留 BayerRG8 原始帧并
-   自动回退到 `cv2.cvtColor(..., COLOR_BayerRG2BGR)`，同时把回退原因写入 JSON
-   的 warnings。
+   自动回退到 `cv2.cvtColor(..., COLOR_BayerRGGB2BGR)`，同时把实际回退路径写入
+   JSON。第一次实机结果误用了 `COLOR_BayerRG2BGR`，而该常量在 OpenCV 中对应
+   BGGR 排列，导致最终视频中手和纸箱偏青蓝；已用合成 RGGB 数据补充回归测试。
 3. 未知格式仍会抛出错误；缓冲区归还放在 `finally`，不会因为格式错误而泄漏。
 4. 现场照明不足导致固定参数 YOLO 对比全部漏检。保留空 CSV 和低亮度首帧，
    不使用其他视频或伪造检测框。
