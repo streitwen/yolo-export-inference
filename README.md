@@ -74,7 +74,11 @@ OpenCV 验证可以正常打开。
 
 ![静态装甲板 B3 识别结果](results/industrial_camera/yolo/yolo_bright_first_detection.jpg)
 
-![移动装甲板 B3 与四个模型关键点](results/industrial_camera/yolo/yolo_live_display_first_detection.jpg)
+![移动装甲板 B3 与四个模型关键点](results/industrial_camera/yolo/yolo_live_display_first_detection_corrected.jpg)
+
+> 该图来自同一次实测的模型输出。第一次运行误用了 Bayer 解码常量，颜色偏青蓝；
+> 下图为按正确 `COLOR_BayerRGGB2BGR` 排列做确定性通道纠正，并用 CSV 中原始
+> 预测框和关键点重新绘制的展示图，不冒充第二次实拍。
 
 ![500 μs 低照度漏检结果](results/industrial_camera/yolo_impact/exposure_500us_gain_0db_first_frame.jpg)
 
@@ -456,7 +460,7 @@ BGR/Bayer 帧复制与转换、FPS、图像指标、中心坐标和命令行参�
 | 找不到曝光或增益节点 | 先设置 `ExposureAuto=Off`、`GainAuto=Off`，并确认不是触发模式 |
 | SDK 帧格式返回 `0x00000000` | 若宽度、高度有效，程序按打开时回读的 PixelFormat 和 ROI 计算安全帧长度，并把异常写入警告 |
 | 请求 BGR8 失败 | 相机可能只支持 BayerRG8；保留失败记录，改用 Bayer 流程 |
-| Bayer 图像颜色异常 | 确认返回的是 `BayerRG8`，不要强行当作 BGR；本程序优先用 SDK 转换，失败时明确回退 OpenCV |
+| Bayer 图像颜色异常 | 确认返回的是 `BayerRG8`，不要强行当作 BGR；OpenCV 回退必须使用 `COLOR_BayerRGGB2BGR`，不能用易混淆的 `COLOR_BayerRG2BGR` |
 | `--no-display` | SSH 或无桌面环境必须使用，录像仍会正常保存 |
 | 检测框延迟越来越大 | 使用最新帧策略；降低相机目标帧率或缩小 ROI，避免队列堆积 |
 | 视频无法播放 | 用 OpenCV `mp4v` 生成；必要时安装 FFmpeg 转 H.264 后再提交 |

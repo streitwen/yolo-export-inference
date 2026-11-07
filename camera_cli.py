@@ -270,6 +270,7 @@ def capture_condition(
                 fps=fps,
                 conversion_ms=frame.conversion_ms,
                 cpu=cpu.sample() if accepted % 5 == 0 else {},
+                conversion=frame.conversion,
             )
             accepted += 1
 
@@ -637,6 +638,7 @@ def stream_yolo(
                 fps=fps,
                 conversion_ms=frame.conversion_ms,
                 cpu=cpu.sample() if frame_count % 5 == 0 else {},
+                conversion=frame.conversion,
             )
 
             timestamp_s = (time.perf_counter() - start)

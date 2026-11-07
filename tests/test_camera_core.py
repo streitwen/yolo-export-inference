@@ -129,6 +129,10 @@ class CameraCoreTests(unittest.TestCase):
         self.assertEqual(result.raw_image.shape, (2, 2))
         self.assertEqual(result.image_bgr.shape, (2, 2, 3))
         self.assertEqual(int(result.image_bgr[0, 0, 0]), 77)
+        self.assertEqual(
+            result.conversion,
+            "MV_CC_ConvertPixelTypeEx (BayerRG8 -> BGR8)",
+        )
         self.assertGreaterEqual(result.conversion_ms, 0.0)
         self.assertEqual(fake.free_calls, 1)
 
@@ -137,13 +141,20 @@ class CameraCoreTests(unittest.TestCase):
             def mv_convert_pixel(self, _handle, _params_pointer):
                 raise MvsError("MV_CC_ConvertPixelTypeEx", 0x80000500)
 
-        storage = (ctypes.c_ubyte * 4)(10, 20, 30, 40)
+        # RGGB block: R=240, G=100, G=100, B=20. The decoded BGR center
+        # pixel must therefore be blue=20, green=100, red=240.
+        raw = np.empty((8, 8), dtype=np.uint8)
+        raw[0::2, 0::2] = 240
+        raw[0::2, 1::2] = 100
+        raw[1::2, 0::2] = 100
+        raw[1::2, 1::2] = 20
+        storage = (ctypes.c_ubyte * raw.size)(*raw.ravel())
         frame = MvFrameOut()
         frame.pBufAddr = ctypes.cast(storage, ctypes.c_void_p)
-        frame.stFrameInfo.nWidth = 2
-        frame.stFrameInfo.nHeight = 2
+        frame.stFrameInfo.nWidth = 8
+        frame.stFrameInfo.nHeight = 8
         frame.stFrameInfo.enPixelType = PixelFormat.BayerRG8
-        frame.stFrameInfo.nFrameLen = 4
+        frame.stFrameInfo.nFrameLen = raw.size
         fake = FailingConvertSdk(frame)
         camera = MvsCamera(CameraConfig(pixel_format="BayerRG8"), sdk=fake)
         camera.handle = ctypes.c_void_p(1)
@@ -153,7 +164,15 @@ class CameraCoreTests(unittest.TestCase):
         result = camera.grab_frame()
 
         self.assertIsNotNone(result)
-        self.assertEqual(result.image_bgr.shape, (2, 2, 3))
+        self.assertEqual(result.image_bgr.shape, (8, 8, 3))
+        blue, green, red = (int(value) for value in result.image_bgr[4, 4])
+        self.assertGreater(red, blue + 150)
+        self.assertGreater(green, blue)
+        self.assertLess(green, red)
+        self.assertEqual(
+            result.conversion,
+            "OpenCV COLOR_BayerRGGB2BGR (BayerRG8 -> BGR8)",
+        )
         self.assertTrue(any("OpenCV" in item for item in camera.warnings))
         self.assertEqual(fake.free_calls, 1)
 
